@@ -1,0 +1,12 @@
+button {
+    height: 300px;
+    width: 200px;
+    overflow: hidden;
+    align-items: center;
+    padding: 0px;
+}
+
+img {
+    height: 300px;
+    width: 200px;
+}
