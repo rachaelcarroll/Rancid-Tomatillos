@@ -16,8 +16,8 @@ class App extends Component {
       <main className="App">
         <nav>
           <h1>Rancid Tomatillos</h1>
-          <MoviesContainer movies={this.state.movies}/>
         </nav>
+        <MoviesContainer movies={this.state.movies}/>
       </main>
     );
   }

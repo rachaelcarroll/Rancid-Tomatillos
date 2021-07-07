@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MoviePoster from '../MoviePoster/MoviePoster';
+import './MoviesContainer.css';
 
 const MoviesContainer = ({movies}) => {
 
