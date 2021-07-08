@@ -8,8 +8,13 @@ class App extends Component {
     super();
     this.state = {
       movies: movieData.movies
+      // isClicked: false
     }
   }
+
+  // updateIsClicked() {
+  //   this.setState({ isClicked: true })
+  // }
 
   render() {
     return (
