@@ -1,13 +1,11 @@
 import React from 'react';
 import './MoviePoster.css'
 
-const MoviePoster = ({id, image}) => {
+const MoviePoster = ({id, image, title}) => {
     return (
-        // <div>
-            <button>
-                <img src={image}></img>
-            </button>
-        // </div>
+        <button>
+            <img src={image} alt={'Cover art image for ' + title}></img>
+        </button>
     )
 }
 
