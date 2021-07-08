@@ -1,5 +1,12 @@
+html {
+  height: 100%;
+  background-image: linear-gradient(to bottom right, rgb(15,15,15), rgb(47,31,125));
+
+}
+
 main {
   height: 100%;
+  margin: 10px;
 }
 
 body {
@@ -7,6 +14,16 @@ body {
   width: 100%;
 }
 
+nav {
+  position: top;
+}
+
+h1 {
+  text-align: center;
+  font-size: 48px;
+  color: rgb(179,120,255);
+  letter-spacing: 1px;
+}
 /* 
 .App-logo {
   height: 40vmin;
