@@ -9,7 +9,7 @@ const MovieDetails = ({backgroundImage, posterImage, id, title, averageRating, r
                 <img src={posterImage} id={id} alt={'Cover art image for ' + title}></img>
                 <button onClick={updateIsClicked}>X</button>
                 <h2>{title}</h2>
-                <p>{averageRating}</p>
+                <p>{'Rating: ' + averageRating.toFixed(0) + '/10'}</p>
                 <p>{releaseDate}</p>
             </div>
         </section>
