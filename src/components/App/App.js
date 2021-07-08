@@ -8,7 +8,8 @@ class App extends Component {
     super();
     this.state = {
       movies: movieData.movies,
-      isClicked: false
+      isClicked: false,
+      clickedMovie: {}
     }
   }
 
@@ -18,13 +19,23 @@ class App extends Component {
 
   // Would need another method like resetIsClicked that returns it to false
 
+  updateClickedMovie = (clickedMovie) => {
+    this.setState({clickedMovie})
+  }
+
   render() {
     return (
       <main className="App">
         <nav>
           <h1>Rancid Tomatillos</h1>
         </nav>
-        <MoviesContainer movies={this.state.movies} isClicked={this.state.isClicked} updateIsClicked={this.updateIsClicked}/>
+        <MoviesContainer 
+        movies={this.state.movies} 
+        isClicked={this.state.isClicked} 
+        updateIsClicked={this.updateIsClicked}
+        clickedMovie={this.state.clickedMovie}
+        updateClickedMovie={this.updateClickedMovie}
+        />
       </main>
     );
   }
