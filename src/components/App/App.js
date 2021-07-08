@@ -14,7 +14,8 @@ class App extends Component {
   }
 
   updateIsClicked = () => {
-    this.setState({ isClicked: true })
+    // this.setState({ isClicked: true })
+  this.state.isClicked ? this.setState({isClicked: false}): this.setState({isClicked: true});
   }
 
   // Would need another method like resetIsClicked that returns it to false

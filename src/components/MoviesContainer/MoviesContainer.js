@@ -61,6 +61,7 @@ const MoviesContainer = ({movies, isClicked, updateIsClicked, clickedMovie, upda
             title={clickedMovie.title} 
             averageRating={clickedMovie.average_rating} 
             releaseDate={clickedMovie.release_date}
+            updateIsClicked={updateIsClicked}
             />}
         </section>
     )
