@@ -10,30 +10,39 @@ const MoviesContainer = ({movies}) => {
     // So maybe it's better to include isClicked in App.js with the other state and then pass a props
     // method to this child component as well as the isClicked value
 
+    // This seems like a lot of data to not be in state...this should probably have state
     let isClicked = false;
+    let clickedMovie;
 
-    const updateIsClicked = () => {
-        isClicked ? isClicked = false: isClicked = true;
-    }
-
+    // If this becomes a class component and has state then this const won't work
+    // In that case, moviePosters would probably have to go in state too
+    // OR is clicked and clickedMovie would go in App.js...but that doesn't seem right
     const moviePosters = movies.map(movie => {
         return (
             <MoviePoster 
-                id={movie.id}
-                key={movie.id}
-                image={movie.poster_path}
-                title={movie.title}
-                updateIsClicked={updateIsClicked}
+            id={movie.id}
+            key={movie.id}
+            image={movie.poster_path}
+            title={movie.title}
+            updateIsClicked={updateIsClicked}
+            findClickedMovie={findClickedMovie}
             />
-        )
-    })
-
+            )
+        })
+        
+        const updateIsClicked = () => {
+            isClicked ? isClicked = false: isClicked = true;
+        }
     
+        const findClickedMovie = (e) => {
+            clickedMovie = moviePosters.find(movie => movie.id === e.target.id)
+        }
+
 
     return (
         <div className="moviesContainer">
             {!isClicked && {moviePosters}}
-            {isClicked && <MovieDetails />}
+            {isClicked && <MovieDetails clickedMovie={clickedMovie}/>}
         </div>
     )
 }
