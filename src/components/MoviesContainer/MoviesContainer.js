@@ -3,9 +3,9 @@ import MoviePoster from '../MoviePoster/MoviePoster';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import './MoviesContainer.css';
 
-const MoviesContainer = ({movies, isClicked, updateIsClicked}) => {
+const MoviesContainer = ({movies, isClicked, updateIsClicked, clickedMovie, updateClickedMovie}) => {
     // Tried to make this a class component so that I could give it state of isClicked = false
-    // But then const moviePosters give error
+    // But then const moviePosters gives error
     // cannot have a variable in a class component
     // either have to include moviePosters in state or move it to a render method before the return
     // So maybe it's better to include isClicked in App.js with the other state and then pass a props
@@ -13,8 +13,7 @@ const MoviesContainer = ({movies, isClicked, updateIsClicked}) => {
 
     // This seems like a lot of data to not be in this functional component...this should probably have state?
     // let isClicked = false;
-    let clickedMovie;
-
+    // let clickedMovie;
     
     // const updateIsClicked = () => {
     //     isClicked ? isClicked = false: isClicked = true;
@@ -23,7 +22,10 @@ const MoviesContainer = ({movies, isClicked, updateIsClicked}) => {
     const findClickedMovie = (e) => {
         console.log('isClicked', isClicked);
         let clickedMovieId = parseInt(e.target.id)
-        clickedMovie = moviePosters.find(movie => movie.id === clickedMovieId)
+        console.log('clicked movie id', clickedMovieId);
+        let clickedMovie = movies.find(movie => movie.id === clickedMovieId);
+        updateClickedMovie(clickedMovie);
+        console.log('clicked movie', clickedMovie);
     }
 
     // If this becomes a class component and has state then this const won't work
@@ -47,10 +49,19 @@ const MoviesContainer = ({movies, isClicked, updateIsClicked}) => {
     // This is not rerendering because we're not updating state or props
     // In order to get an automatic re-render, we need to make this a class component
     // or add this state to app and pass it in as props
+    // console.log('clicked movie here', clickedMovie);
     return (
         <section>
             {!isClicked && <div className="moviesContainer">{moviePosters}</div>}
-            {!!isClicked && <MovieDetails clickedMovie={clickedMovie}/>}
+            {isClicked && 
+            <MovieDetails 
+            backgroundImage={clickedMovie.backdrop_path} 
+            posterImage={clickedMovie.poster_path} 
+            id={clickedMovie.id} 
+            title={clickedMovie.title} 
+            averageRating={clickedMovie.average_rating} 
+            releaseDate={clickedMovie.release_date}
+            />}
         </section>
     )
 }
