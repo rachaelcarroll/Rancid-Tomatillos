@@ -5,6 +5,7 @@ button {
     /* align-items: center; */
     padding: 0px;
     box-shadow: 5px 5px 15px black;
+    border: none;
 }
 
 img {
