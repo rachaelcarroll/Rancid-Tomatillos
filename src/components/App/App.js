@@ -10,6 +10,7 @@ class App extends Component {
       movies: movieData.movies,
       isClicked: false,
       clickedMovie: {}
+      // error: ''
     }
   }
 
@@ -30,6 +31,7 @@ class App extends Component {
         <nav>
           <h1>Rancid Tomatillos</h1>
         </nav>
+        {!this.state.movies.length && <h3>Loading...</h3>}
         <MoviesContainer 
         movies={this.state.movies} 
         isClicked={this.state.isClicked} 
@@ -39,7 +41,7 @@ class App extends Component {
         />
       </main>
     );
-  }
+   }
 }
 
 export default App;
