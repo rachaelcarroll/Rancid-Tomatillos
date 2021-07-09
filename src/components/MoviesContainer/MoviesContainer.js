@@ -1,9 +1,8 @@
 import React from 'react';
 import MoviePoster from '../MoviePoster/MoviePoster';
-import MovieDetails from '../MovieDetails/MovieDetails';
 import './MoviesContainer.css';
 
-const MoviesContainer = ({movies, isClicked, updateIsClicked, clickedMovie, updateClickedMovie}) => {
+const MoviesContainer = ({movies, selectMovie}) => {
     // Tried to make this a class component so that I could give it state of isClicked = false
     // But then const moviePosters gives error
     // cannot have a variable in a class component
@@ -19,14 +18,14 @@ const MoviesContainer = ({movies, isClicked, updateIsClicked, clickedMovie, upda
     //     isClicked ? isClicked = false: isClicked = true;
     // }
     
-    const findClickedMovie = (e) => {
-        console.log('isClicked', isClicked);
-        let clickedMovieId = parseInt(e.target.id)
-        console.log('clicked movie id', clickedMovieId);
-        let clickedMovie = movies.find(movie => movie.id === clickedMovieId);
-        updateClickedMovie(clickedMovie);
-        console.log('clicked movie', clickedMovie);
-    }
+    // const findClickedMovie = (e) => {
+    //     console.log('isClicked', isClicked);
+    //     let clickedMovieId = parseInt(e.target.id)
+    //     console.log('clicked movie id', clickedMovieId);
+    //     let clickedMovie = movies.find(movie => movie.id === clickedMovieId);
+    //     selectMovie(clickedMovie);
+    //     console.log('clicked movie', clickedMovie);
+    // }
 
     // If this becomes a class component and has state then this const won't work
     // In that case, moviePosters would probably have to go in state too
@@ -39,11 +38,10 @@ const MoviesContainer = ({movies, isClicked, updateIsClicked, clickedMovie, upda
             key={movie.id}
             image={movie.poster_path}
             title={movie.title}
-            updateIsClicked={updateIsClicked}
-            findClickedMovie={findClickedMovie}
+            selectMovie={selectMovie}
             />
-            )
-        })
+        )
+    })
         
 
     // This is not rerendering because we're not updating state or props
@@ -51,8 +49,10 @@ const MoviesContainer = ({movies, isClicked, updateIsClicked, clickedMovie, upda
     // or add this state to app and pass it in as props
     // console.log('clicked movie here', clickedMovie);
     return (
+    
         <section>
-            {!isClicked && <div className="moviesContainer">{moviePosters}</div>}
+            <div className='moviesContainer'>{moviePosters}</div>
+            {/* {!isClicked && <div className="moviesContainer">{moviePosters}</div>}
             {isClicked && 
             <MovieDetails 
             backgroundImage={clickedMovie.backdrop_path} 
@@ -62,7 +62,7 @@ const MoviesContainer = ({movies, isClicked, updateIsClicked, clickedMovie, upda
             averageRating={clickedMovie.average_rating} 
             releaseDate={clickedMovie.release_date}
             updateIsClicked={updateIsClicked}
-            />}
+            />} */}
         </section>
     )
 }
