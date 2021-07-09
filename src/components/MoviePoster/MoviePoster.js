@@ -1,11 +1,11 @@
 import React from 'react';
 import './MoviePoster.css'
 
-const MoviePoster = ({id, image, title, updateIsClicked, findClickedMovie}) => {
+const MoviePoster = ({id, image, title, selectMovie}) => {
     return (
-        <button onClick={(e) => {
-            updateIsClicked();
-            findClickedMovie(e);
+        <button onClick={() => {
+            console.log(id)
+            selectMovie(id);
             }}>
             <img src={image} id={id} alt={'Cover art image for ' + title}></img>
         </button>
