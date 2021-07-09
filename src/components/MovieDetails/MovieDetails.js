@@ -14,6 +14,7 @@ const MovieDetails = ({movieInfo, updateIsClicked }) => {
                 <h2>{movieInfo.title}</h2>
                 <p>{"Rating: " + formattedRating + "/10"}</p>
                 <p>{movieInfo.release_date}</p>
+                <p>{movieInfo.overview}</p>
             </div>
         </section>
     )
