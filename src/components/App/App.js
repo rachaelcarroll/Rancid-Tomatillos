@@ -10,13 +10,13 @@ class App extends Component {
     this.state = {
       movies: movieData.movies,
       // isClicked: false,
-      clickedMovie: {},
+      clickedMovie: '',
       // error: ''
     }
   }
 
   updateIsClicked = () => {
-  this.setState({clickedMovie: {}})
+  this.setState({clickedMovie: ''})
   }
 
   selectMovie = (id) => {
@@ -33,13 +33,13 @@ class App extends Component {
         {!this.state.movies.length && <h3>Loading...</h3>}
         {
           this.state.clickedMovie.id ?
-          <MovieDetails key={this.state.clickedMovie.id} movieInfo={this.state.clickedMovie}/> :
+          <MovieDetails key={this.state.clickedMovie.id} movieInfo={this.state.clickedMovie} updateIsClicked={this.updateIsClicked}/> :
           <MoviesContainer 
           movies={this.state.movies} 
+          selectMovie={this.selectMovie}
           // isClicked={this.state.isClicked} 
           // clickedMovie={this.state.clickedMovie}
-          updateIsClicked={this.updateIsClicked}
-          selectMovie={this.selectMovie}
+          // updateIsClicked={this.updateIsClicked}
           />
         }     
       </main>

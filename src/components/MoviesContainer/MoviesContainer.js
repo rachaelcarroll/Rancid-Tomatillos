@@ -1,9 +1,8 @@
 import React from 'react';
 import MoviePoster from '../MoviePoster/MoviePoster';
-import MovieDetails from '../MovieDetails/MovieDetails';
 import './MoviesContainer.css';
 
-const MoviesContainer = ({movies, selectMovie, clickedMovie}) => {
+const MoviesContainer = ({movies, selectMovie}) => {
     // Tried to make this a class component so that I could give it state of isClicked = false
     // But then const moviePosters gives error
     // cannot have a variable in a class component
