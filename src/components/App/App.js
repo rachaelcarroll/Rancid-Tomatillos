@@ -10,13 +10,13 @@ class App extends Component {
     this.state = {
       movies: movieData.movies,
       // isClicked: false,
-      clickedMovie: '',
+      clickedMovie: {},
       // error: ''
     }
   }
 
   updateIsClicked = () => {
-  this.setState({clickedMovie: ''})
+  this.setState({clickedMovie: {}})
   }
 
   selectMovie = (id) => {
