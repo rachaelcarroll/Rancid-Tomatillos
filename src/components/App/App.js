@@ -20,8 +20,8 @@ class App extends Component {
   }
 
   selectMovie = (id) => {
-    const clickedMovie = this.state.movies.find(movie => movie.id === id)
-    this.setState({clickedMovie: clickedMovie});
+    const selectedMovie = this.state.movies.find(movie => movie.id === id)
+    this.setState({clickedMovie: selectedMovie});
   }
 
   render() {
