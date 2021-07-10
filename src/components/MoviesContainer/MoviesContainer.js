@@ -3,8 +3,14 @@ import MoviePoster from '../MoviePoster/MoviePoster';
 import './MoviesContainer.css';
 
 const MoviesContainer = ({movies, updateClickedMovie}) => {
+    
+    const sortedPosters = movies.sort((a, b) => {
+        let aTitle = a.title;
+        let bTitle = b.title;
+        return aTitle.localeCompare(bTitle);
+    });
 
-    const moviePosters = movies.map(movie => {
+    const moviePosters = sortedPosters.map(movie => {
         return (
             <MoviePoster 
             id={movie.id}
@@ -12,7 +18,6 @@ const MoviesContainer = ({movies, updateClickedMovie}) => {
             image={movie.poster_path}
             title={movie.title}
             updateClickedMovie={updateClickedMovie}
-            // getMovieInfo={getMovieInfo}
             />
         )
     })
