@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';
-import movieData from '../../movieData';
+// import movieData from '../../movieData';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
+import { fetchMovies } from '../../apiCalls';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      movies: movieData.movies,
-      // isClicked: false,
+      movies: [],
+      // movies: movieData.movies,
       clickedMovie: {},
       // error: ''
     }
+  }
+
+  componentDidMount() {
+    fetchMovies()
+      .then(data => this.setState({ movies: data.movies }))
+      .then(data => console.log('api data', data))
+      .catch(error => console.log(error));
   }
 
   updateIsClicked = () => {
