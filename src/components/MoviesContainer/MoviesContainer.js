@@ -21,17 +21,6 @@ const MoviesContainer = ({movies, updateClickedMovie}) => {
     
         <section>
             <div className='moviesContainer'>{moviePosters}</div>
-            {/* {!isClicked && <div className="moviesContainer">{moviePosters}</div>}
-            {isClicked && 
-            <MovieDetails 
-            backgroundImage={clickedMovie.backdrop_path} 
-            posterImage={clickedMovie.poster_path} 
-            id={clickedMovie.id} 
-            title={clickedMovie.title} 
-            averageRating={clickedMovie.average_rating} 
-            releaseDate={clickedMovie.release_date}
-            updateIsClicked={updateIsClicked}
-            />} */}
         </section>
     )
 }
