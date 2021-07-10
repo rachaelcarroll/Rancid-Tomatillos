@@ -2,7 +2,7 @@ import React from 'react';
 import MoviePoster from '../MoviePoster/MoviePoster';
 import './MoviesContainer.css';
 
-const MoviesContainer = ({movies, selectMovie}) => {
+const MoviesContainer = ({movies, updateClickedMovie }) => {
     // Tried to make this a class component so that I could give it state of isClicked = false
     // But then const moviePosters gives error
     // cannot have a variable in a class component
@@ -38,7 +38,7 @@ const MoviesContainer = ({movies, selectMovie}) => {
             key={movie.id}
             image={movie.poster_path}
             title={movie.title}
-            selectMovie={selectMovie}
+            updateClickedMovie={updateClickedMovie}
             />
         )
     })

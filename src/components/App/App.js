@@ -30,7 +30,7 @@ class App extends Component {
   this.setState({clickedMovie: {}})
   }
 
-  selectMovie = (id) => {
+  updateClickedMovie = (id) => {
     const selectedMovie = this.state.movies.find(movie => movie.id === id)
     this.setState({clickedMovie: selectedMovie});
   }
@@ -44,10 +44,10 @@ class App extends Component {
         {!this.state.movies.length && <h3>Loading...</h3>}
         {
           this.state.clickedMovie.id ?
-          <MovieDetails key={this.state.clickedMovie.id} movieInfo={this.state.clickedMovie} updateIsClicked={this.updateIsClicked}/> :
+          <MovieDetails key={this.state.clickedMovie.id} movieInfo={this.state.clickedMovie} resetIsClicked={this.resetClickedMovie}/> :
           <MoviesContainer 
           movies={this.state.movies} 
-          selectMovie={this.selectMovie}
+          updateClickedMovie={this.updateClickedMovie}
           // isClicked={this.state.isClicked} 
           // clickedMovie={this.state.clickedMovie}
           // updateIsClicked={this.updateIsClicked}
