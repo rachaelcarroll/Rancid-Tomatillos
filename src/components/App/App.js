@@ -19,11 +19,14 @@ class App extends Component {
   componentDidMount() {
     fetchMovies()
       .then(data => this.setState({ movies: data.movies }))
-      .then(data => console.log('api data', data))
       .catch(error => console.log(error));
   }
 
-  updateIsClicked = () => {
+  componentDidUpdate() {
+
+  }
+
+  resetClickedMovie = () => {
   this.setState({clickedMovie: {}})
   }
 
