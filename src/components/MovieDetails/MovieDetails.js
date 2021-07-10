@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './MovieDetails.css'
 
 const MovieDetails = ({movieInfo, resetClickedMovie}) => {
@@ -20,5 +21,10 @@ const MovieDetails = ({movieInfo, resetClickedMovie}) => {
         </section>
     )
 }
+
+MovieDetails.propTypes = {
+    movieInfo: PropTypes.object,
+    resetClickedMovie: PropTypes.func,
+  }
 
 export default MovieDetails;
