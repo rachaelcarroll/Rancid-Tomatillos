@@ -1,8 +1,8 @@
 import React from 'react';
 import './MovieDetails.css'
 
-const MovieDetails = ({movieInfo, resetIsClicked}) => {
-    console.log(movieInfo)
+const MovieDetails = ({movieInfo, resetClickedMovie}) => {
+    // console.log(movieInfo)
     const formattedRating = movieInfo.average_rating.toFixed(0);
     // const formattedDate = 
     return (

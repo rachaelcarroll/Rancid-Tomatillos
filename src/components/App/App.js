@@ -4,35 +4,32 @@ import './App.css';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import { fetchMovies } from '../../apiCalls';
+import { fetchMovieInfo } from '../../apiCalls';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       movies: [],
-      // movies: movieData.movies,
-      clickedMovie: {},
+      clickedMovie: {}
       // error: ''
     }
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     fetchMovies()
       .then(data => this.setState({ movies: data.movies }))
       .catch(error => console.log(error));
   }
 
-  componentDidUpdate() {
-
-  }
-
   resetClickedMovie = () => {
-  this.setState({clickedMovie: {}})
+    this.setState({clickedMovie: {}})
   }
-
+  
   updateClickedMovie = (id) => {
-    const selectedMovie = this.state.movies.find(movie => movie.id === id)
-    this.setState({clickedMovie: selectedMovie});
+    fetchMovieInfo(id)
+        .then(movie => this.setState({ clickedMovie: movie.movie }))
+        .catch(error => console.log(error));
   }
 
   render() {
@@ -44,13 +41,10 @@ class App extends Component {
         {!this.state.movies.length && <h3>Loading...</h3>}
         {
           this.state.clickedMovie.id ?
-          <MovieDetails key={this.state.clickedMovie.id} movieInfo={this.state.clickedMovie} resetIsClicked={this.resetClickedMovie}/> :
+          <MovieDetails key={this.state.clickedMovie.id} movieInfo={this.state.clickedMovie} resetClickedMovie={this.resetClickedMovie}/> :
           <MoviesContainer 
           movies={this.state.movies} 
           updateClickedMovie={this.updateClickedMovie}
-          // isClicked={this.state.isClicked} 
-          // clickedMovie={this.state.clickedMovie}
-          // updateIsClicked={this.updateIsClicked}
           />
         }     
       </main>
