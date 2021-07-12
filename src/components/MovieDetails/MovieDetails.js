@@ -5,6 +5,15 @@ import './MovieDetails.css'
 const MovieDetails = ({movieInfo, resetClickedMovie}) => {
     // console.log(movieInfo)
     const formattedRating = movieInfo.average_rating.toFixed(0);
+
+    const formatOverviewLength = () => {
+        if (movieInfo.overview.length > 180) {
+           const shortOverview = movieInfo.overview.slice(0, 182) + '...';
+           return shortOverview;
+        } else {
+            return movieInfo.overview;
+        }
+    }
     // const formattedDate = 
     return (
         <section className="movieDetailsContainer" style={{ backgroundImage: `url(${movieInfo.backdrop_path})`}}>
@@ -15,7 +24,7 @@ const MovieDetails = ({movieInfo, resetClickedMovie}) => {
                     <h2>{movieInfo.title}</h2>
                     <p>{"Rating: " + formattedRating + "/10"}</p>
                     <p>{movieInfo.release_date}</p>
-                    <p>{movieInfo.overview}</p>
+                    <p>{formatOverviewLength()}</p>
                 </div>
             </div>
         </section>
