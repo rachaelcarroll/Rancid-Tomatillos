@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import './MovieDetails.css'
 
 const MovieDetails = ({movieInfo, resetClickedMovie}) => {
-    // console.log(movieInfo)
+    console.log('what is here', movieInfo.tagline)
     const formattedRating = movieInfo.average_rating.toFixed(0);
 
     const formatOverviewLength = () => {
-        if (movieInfo.overview.length > 180) {
+        if (movieInfo.overview.length > 182) {
            const shortOverview = movieInfo.overview.slice(0, 182) + '...';
            return shortOverview;
         } else {
@@ -22,6 +22,7 @@ const MovieDetails = ({movieInfo, resetClickedMovie}) => {
                 <img className='movie-poster' src={movieInfo.poster_path} id={movieInfo.id} alt={'Cover art image for ' + movieInfo.title}></img>
                 <div className='movieDetailsCard'>
                     <h2>{movieInfo.title}</h2>
+                    <h4>{movieInfo.tagline}</h4>
                     <p>{"Rating: " + formattedRating + "/10"}</p>
                     <p>{movieInfo.release_date}</p>
                     <p>{formatOverviewLength()}</p>
