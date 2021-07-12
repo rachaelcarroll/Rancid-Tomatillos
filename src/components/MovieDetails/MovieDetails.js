@@ -26,7 +26,7 @@ const MovieDetails = ({movieInfo, resetClickedMovie}) => {
                     <p>{"Genre: " + movieInfo.genres}</p>
                     <p>{"Rating: " + formattedRating + "/10"}</p>
                     <p>{movieInfo.release_date}</p>
-                    <p>{formatOverviewLength()}</p>
+                    <p className='overview'>{formatOverviewLength()}</p>
                 </div>
             </div>
         </section>
