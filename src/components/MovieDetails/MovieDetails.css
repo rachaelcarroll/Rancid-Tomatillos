@@ -28,11 +28,11 @@
 
 .movieDetailsCard {
   background-color: black;
-  opacity: 60%;
-  height: 50%;
+  opacity: 70%;
+  height: 30%;
   width: 40%;
   text-align: center;
-  padding: 15px;
+  padding: 5px 10px 40px;
 }
 
 h2,

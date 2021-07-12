@@ -1,14 +1,13 @@
 button {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    /* align-items: center; */
-    padding: 0px;
-    box-shadow: 5px 5px 15px black;
-    border: none;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding: 0px;
+  box-shadow: 5px 5px 15px black;
+  border: none;
 }
 
 img {
-   height: 100%;
-   width: 100%;
+  height: 100%;
+  width: 100%;
 }
