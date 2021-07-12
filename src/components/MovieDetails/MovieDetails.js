@@ -23,6 +23,7 @@ const MovieDetails = ({movieInfo, resetClickedMovie}) => {
                 <div className='movieDetailsCard'>
                     <h2>{movieInfo.title}</h2>
                     <h4>{movieInfo.tagline}</h4>
+                    <p>{"Genre: " + movieInfo.genres}</p>
                     <p>{"Rating: " + formattedRating + "/10"}</p>
                     <p>{movieInfo.release_date}</p>
                     <p>{formatOverviewLength()}</p>
