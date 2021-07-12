@@ -8,7 +8,7 @@ const MovieDetails = ({movieInfo, resetClickedMovie}) => {
     // const formattedDate = 
     return (
         <section className="movieDetailsContainer" style={{ backgroundImage: `url(${movieInfo.backdrop_path})`}}>
-                <button className='return-home' onClick={() => {resetClickedMovie()}}>X</button>
+                <button className='returnHome' onClick={() => {resetClickedMovie()}}>X</button>
             <div className='movieDescription'>
                 <img className='movie-poster' src={movieInfo.poster_path} id={movieInfo.id} alt={'Cover art image for ' + movieInfo.title}></img>
                 <div className='movieDetailsCard'>
