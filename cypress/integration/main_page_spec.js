@@ -2,7 +2,10 @@
 describe ('Main Page', () => {
 
     beforeEach(() => {
-        cy.visit('http://localhost:3000');
+        cy
+            .intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/694919', { fixture: 'movie_details.json' })
+            .intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', { fixture: 'single_movie_data.json' })
+            .visit('http://localhost:3000');
       });
 
     describe('Main Page Load', () => {
@@ -22,3 +25,6 @@ describe ('Main Page', () => {
             });
           });
     })
+
+
+   
