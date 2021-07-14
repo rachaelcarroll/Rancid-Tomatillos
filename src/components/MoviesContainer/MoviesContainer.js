@@ -25,9 +25,9 @@ const MoviesContainer = ({movies, updateClickedMovie}) => {
         
     return (
     
-        <section className='allMovies'>
-            <div className='moviesContainer'>{moviePosters}</div>
-        </section>
+
+        <div className='moviesContainer'>{moviePosters}</div>
+    
     )
 }
  
