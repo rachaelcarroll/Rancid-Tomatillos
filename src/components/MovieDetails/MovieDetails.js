@@ -14,45 +14,42 @@ class MovieDetails extends Component {
    
     componentDidMount() {
         console.log("heyyyyyyyy", this.props.id);
-        // this.props.updateClickedMovie(this.props.movieInfo.id);
         fetchMovieInfo(this.props.id)
             .then(movie => this.setState({ movieInfo: movie.movie }))
             .catch(error => this.setState({ error: 'Having trouble finding this movie right now...please try again.'} ));
-
     }
 
-    // formatOverviewLength = () => {
-    //     if (this.props.movieInfo.overview.length > 182) {
-    //         const shortOverview = this.props.movieInfo.overview.slice(0, 182) + '...';
+   
+    render() {
+
+
+    //     const formatOverviewLength = () => {
+    //     if (this.state.movieInfo.overview.length > 182) {
+    //         const shortOverview = this.state.movieInfo.overview.slice(0, 182) + '...';
     //         return shortOverview;
     //     } else {
-    //         return this.props.movieInfo.overview;
+    //         return this.state.movieInfo.overview;
     //     }
     // }
-    render() {
-        // const formattedDate = 
-        console.log("DO YOU RENDER")
-        const movieInfo = this.props.movieInfo
-        // !this.state.movieInfo.id ? movieInfo = this.props.movieInfo : { movieInfo } = this.state.movieInfo;
-        console.log('movie info in render', movieInfo)
-        const { resetClickedMovie } = this.props;
-        const formattedRating = movieInfo.average_rating.toFixed(0);
+        if (!this.state.movieInfo) {
+            return <h2 className='loading-message'>Page Loading 🍿</h2>
+          }
 
         return (
 
-            <section className="movieDetailsContainer" style={{ backgroundImage: `url(${movieInfo.backdrop_path})`}}>
+            <section className="movieDetailsContainer" style={{ backgroundImage: `url(${this.state.movieInfo.backdrop_path})`}}>
                 <Link to="/">
-                    <button className='returnHome' onClick={() => {resetClickedMovie()}}>X</button>
+                    <button className='returnHome'>X</button>
                 </Link>
                 <div className='movieDescription'>
-                    <img className='movie-poster' src={movieInfo.poster_path} id={movieInfo.id} alt={'Cover art image for ' + movieInfo.title}></img>
+                    <img className='movie-poster' src={this.state.movieInfo.poster_path} id={this.state.movieInfo.id} alt={'Cover art image for ' + this.state.movieInfo.title}></img>
                     <div className='movieDetailsCard'>
-                        <h2>{movieInfo.title}</h2>
-                        <h4>{movieInfo.tagline}</h4>
-                        <p>{"Genre: " + movieInfo.genres}</p>
-                        <p>{"Rating: " + formattedRating + "/10"}</p>
-                        <p>{movieInfo.release_date}</p>
-                        {/* <p className='overview'>{this.formatOverviewLength()}</p> */}
+                        <h2>{this.state.movieInfo.title}</h2>
+                        <h4>{this.state.movieInfo.tagline}</h4>
+                        <p>{"Genre: " + this.state.movieInfo.genres}</p>
+                        {/* <p>{"Rating: " + formattedRating + "/10"}</p> */}
+                        <p>{this.state.movieInfo.release_date}</p>
+                        <p className='overview'>{this.state.movieInfo.overview}</p>
                     </div>
                 </div>
             </section>
