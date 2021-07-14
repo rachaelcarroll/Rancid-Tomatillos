@@ -6,13 +6,14 @@ import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import { fetchMovies } from '../../apiCalls';
 import { fetchMovieInfo } from '../../apiCalls';
+import { Route } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       movies: [],
-      clickedMovie: {},
+      // clickedMovie: {},
       error: ''
     }
   }
@@ -27,11 +28,22 @@ class App extends Component {
     this.setState({clickedMovie: {}})
   }
   
-  updateClickedMovie = (id) => {
-    fetchMovieInfo(id)
-        .then(movie => this.setState({ clickedMovie: movie.movie }))
-        .catch(error => this.setState({ error: 'Having trouble finding this movie right now...please try again.'} ));
+  getSelectedMovie = (id) => {
+    console.log(typeof id)
+    console.log("ID", id);
+    console.log('MOVIE ID IN STATe', this.state.movies);
+    console.log('FIND MOVIE', this.state.movies.find(movie => movie.id === id));
+    return this.state.movies.find(movie => movie.id === id);
   }
+  // updateClickedMovie = (id) => {
+  //   console.log("ID", id);
+  //   console.log('Are you getting here?')
+
+  //   fetchMovieInfo(id)
+  //       .then(movie => this.setState({ clickedMovie: movie.movie }))
+  //       .catch(error => this.setState({ error: 'Having trouble finding this movie right now...please try again.'} ));
+  //   console.log("STATE", this.state.clickedMovie);
+  // }
 
   render() {
     return (
@@ -41,14 +53,25 @@ class App extends Component {
         </nav>
         {this.state.error && <h3>{this.state.error}</h3>}
         {!this.state.movies.length && !this.state.error && <h3>Loading...</h3>}
-        {
-          this.state.clickedMovie.id && !this.state.error ?
-          <MovieDetails key={this.state.clickedMovie.id} movieInfo={this.state.clickedMovie} resetClickedMovie={this.resetClickedMovie}/> :
-          <MoviesContainer 
-          movies={this.state.movies} 
-          updateClickedMovie={this.updateClickedMovie}
-          />
-        }     
+        
+          <Route exact path="/:id" render={({ match }) => {
+            const movieURLId = parseInt(match.params.id);
+            const selectedMovie = this.getSelectedMovie(movieURLId);
+            console.log('SELECTED MOVIE', selectedMovie);
+            return <MovieDetails key={movieURLId} 
+            // resetClickedMovie={this.resetClickedMovie} 
+            id={movieURLId}
+            movieInfo={selectedMovie}
+            // updateClickedMovie={this.updateClickedMovie}
+            /> 
+          }}/>
+          <Route exact path="/" render={() =>  
+            <MoviesContainer 
+            movies={this.state.movies} 
+            updateClickedMovie={this.updateClickedMovie}
+            />
+          }/>
+           
       </main>
     );
    }
