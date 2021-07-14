@@ -22,6 +22,14 @@ describe ('Main Page', () => {
         cy.url().should('include', '/')
     })
 
+    it('Should see a movie details when clicking on a movie poster', () => {
+        cy.get("a[name='Mulan']")
+          .click()
+        cy.contains("She is spirited")
+        cy.get("img")
+        .should("have.attr", "src").should("include", "https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg")
+    })
+
 });
 
 
