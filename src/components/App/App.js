@@ -13,7 +13,6 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
-      // clickedMovie: {},
       error: ''
     }
   }
@@ -21,7 +20,7 @@ class App extends Component {
   componentDidMount = () => {
     fetchMovies()
       .then(data => this.setState({ movies: data.movies }))
-      .catch(error => this.setState({ error: 'Error loading movies...please try again.'} ));
+      .catch(() => this.setState({ error: 'Error loading movies...please try again.'} ));
   }
 
   resetClickedMovie = () => {
@@ -59,10 +58,8 @@ class App extends Component {
             const selectedMovie = this.getSelectedMovie(movieURLId);
             console.log('SELECTED MOVIE', selectedMovie);
             return <MovieDetails key={movieURLId} 
-            // resetClickedMovie={this.resetClickedMovie} 
             id={movieURLId}
             movieInfo={selectedMovie}
-            // updateClickedMovie={this.updateClickedMovie}
             /> 
           }}/>
           <Route exact path="/" render={() =>  
