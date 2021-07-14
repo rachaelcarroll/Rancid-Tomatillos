@@ -59,10 +59,8 @@ class App extends Component {
             const selectedMovie = this.getSelectedMovie(movieURLId);
             console.log('SELECTED MOVIE', selectedMovie);
             return <MovieDetails key={movieURLId} 
-            // resetClickedMovie={this.resetClickedMovie} 
             id={movieURLId}
             movieInfo={selectedMovie}
-            // updateClickedMovie={this.updateClickedMovie}
             /> 
           }}/>
           <Route exact path="/" render={() =>  
