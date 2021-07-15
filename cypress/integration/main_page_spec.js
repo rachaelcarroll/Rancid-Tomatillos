@@ -44,6 +44,14 @@ describe ('Main Page', () => {
         cy.get('.movieDescription').children('.movieDetailsCard').contains('Mulan')
       })
 
+      it.only('Should return to home page view showing all movies when the exit button is clicked', () => {
+        cy
+        .get('.moviesContainer')
+        .get("a[name='Mulan']").click()
+        .get('button').click()
+        cy.url().should('include', '/')
+      })
+
 });
 
 
