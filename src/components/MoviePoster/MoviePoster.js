@@ -3,16 +3,9 @@ import PropTypes from 'prop-types';
 import './MoviePoster.css';
 import { Link } from 'react-router-dom';
 
-const MoviePoster = ({id, image, title, updateClickedMovie}) => {
+const MoviePoster = ({id, image, title}) => {
     return (
-        // <button onClick={() => {
-        //     updateClickedMovie(id);
-        //     }}>
-        //     <Link to={`/${id}`}>
-        //         <img src={image} id={id} alt={'Cover art image for ' + title}></img>
-        //     </Link>
-        // </button>
-        <Link to={`/${id}`}>
+        <Link to={`/${id}`} name={title} className='moviePoster'>
             <img src={image} id={id} alt={'Cover art image for ' + title}></img>
         </Link>
     )
