@@ -29,11 +29,20 @@ class MovieDetails extends Component {
         }
     }
 
-    formatGenres(genres) {
+    formatGenres = (genres) => {
         const allGenres = genres.join(' | ')
         return allGenres 
       }
+
+    formatRating = (rating) => {
+        const formattedRating = rating.toFixed(0)
+        return formattedRating
+    }
     
+    formatReleaseDate = (date) => {
+        const yearReleased = date.split("-")[0]
+        return yearReleased
+    }
    
     render() {
         
@@ -58,8 +67,8 @@ class MovieDetails extends Component {
                             <h2>{this.state.movieInfo.title}</h2>
                             <h4>{this.state.movieInfo.tagline}</h4>
                             <p>| {this.formatGenres(this.state.movieInfo.genres)} | </p>
-                            <p>{"Rating: " + this.state.movieInfo.average_rating + "/10"}</p>
-                            <p>{"Release Date: " + this.state.movieInfo.release_date}</p>
+                            <p>Rating: {this.formatRating(this.state.movieInfo.average_rating)}/10</p>
+                            <p>Year Released: {this.formatReleaseDate(this.state.movieInfo.release_date)}</p>
                             <p className='overview'>{this.formatOverview(this.state.movieInfo.overview)}</p>
                         </div>
                     </div> }
