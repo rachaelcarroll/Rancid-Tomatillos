@@ -26,12 +26,33 @@ describe ('Main Details Page', () => {
         cy.get('.movieDescription').children('.movieDetailsCard').contains('Mulan')
       })
 
-      it('Should return to home page view showing all movies when the exit button is clicked', () => {
+    it('Should return to home page view showing all movies when the exit button is clicked', () => {
         cy
         .get('.moviesContainer')
         .get("a[name='Mulan']").click()
         .get('button').click()
         cy.url().should('include', '/')
-      })
-
+    })
 })
+
+// Cannot get this to work, the network request is still coming through so the error is never popping up
+// I tried a few different ways (as seen below) and tried intercepting after we visit the single movie page as well as before (which should be the accurate way)
+
+// describe.only ('Error message handling', () => {
+
+//     it('Should show error message when a single movie details page does not load', () => {
+//         cy
+//         .intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { response: 404 })
+//         .visit('http://localhost:3000/337401')
+//         .get('.movieDetailsContainer').get('errorLoading').contains('Having trouble finding this movie right now...please try again.')
+
+
+//         // .visit('http://localhost:3000/')
+//         // .get('.moviesContainer')
+//         // .get("a[name='Mulan']").click()
+//         // .get('button').click()
+//         // .intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { response: 404 })
+
+//       })
+
+// })

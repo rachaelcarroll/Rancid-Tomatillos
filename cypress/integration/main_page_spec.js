@@ -25,7 +25,8 @@ describe ('Main Page', () => {
     })
 });
 
-describe.only('Error testing', () => {
+describe('Error testing', () => {
+  
     it('Should show an error message when no movies render', () => {
       cy
         .intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', { statusCode: 404})

@@ -48,7 +48,6 @@ class MovieDetails extends Component {
         
         // if (this.state.movieInfo.id) {
         //     const { movieInfo } = this.state
-        //     console.log("WORKING?", movieInfo)
         // }
         // if (this.state.error) {
         //     return <h3>{this.state.error}</h3>
@@ -62,7 +61,7 @@ class MovieDetails extends Component {
                     <Link to="/">
                         <button className='returnHome'>X</button>
                     </Link>
-                    {this.state.error && <h3>{this.state.error}</h3>}
+                    {this.state.error && <h3 className="errorLoading">{this.state.error}</h3>}
                     {!this.state.movieInfo && !this.state.error && <h2 className='loading-message'>Page Loading 🍿</h2>}
 
                     {this.state.movieInfo.id && !this.state.error &&
