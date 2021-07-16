@@ -50,6 +50,11 @@ class MovieDetails extends Component {
         //     const { movieInfo } = this.state
         //     console.log("WORKING?", movieInfo)
         // }
+        // if (this.state.error) {
+        //     return <h3>{this.state.error}</h3>
+        // } else if (!this.state.movieInfo && !this.state.error) {
+        //     return <h2 className='loading-message'>Page Loading 🍿</h2>
+        // } else {
 
             return (
     
@@ -73,10 +78,9 @@ class MovieDetails extends Component {
                         </div>
                     </div> }
                 </section>
+                    
             )
-
-    
- }
+    }
 }
 
 MovieDetails.propTypes = {
