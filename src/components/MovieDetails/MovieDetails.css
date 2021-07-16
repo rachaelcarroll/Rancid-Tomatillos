@@ -3,6 +3,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: 0 0 12px 12px rgb(29, 22, 62) inset;
+  overflow-y: scroll;
 }
 
 .movieDescription {
@@ -18,19 +19,35 @@
   width: 52px;
   border-radius: 10px;
   font-size: 28px;
+  box-shadow: 1px 3px 14px;
+  border: transparent;
+}
+
+.returnHome:hover {
+  background-color:rgb(29, 22, 62);
+  color: white;
+  box-shadow: none;
 }
 
 .movie-poster {
-  height: 65%;
+  /* height: 65%; */
+  min-height: 200px;
+  max-height: 565px;
   margin: 15px;
-  width: 40%;
+  /* width: 40%; */
+  min-width: 355px;
+  max-width: 400px;
+  box-shadow: 9px 11px 14px 0px black;
+  border-radius: 4px;
 }
 
 .movieDetailsCard {
   background-color: black;
   opacity: 70%;
-  height: 62%;
-  width: 40%;
+  min-height: 200px;
+  max-height: 300px;
+  min-width: 300px;
+  max-width: 300px;
   text-align: center;
   padding: 20px 15px 30px;
 }
@@ -40,6 +57,7 @@ h4 {
   color: white;
   font-size: 26px;
   margin: 0;
+  letter-spacing: 1.2px;
 }
 
 h4 {
@@ -51,7 +69,7 @@ h4 {
 
 p {
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   margin: 5px;
 }
 
@@ -59,12 +77,12 @@ p {
   padding-bottom: 20px;
 } */
 
-@media only screen and (max-width: 840px) {
+/* @media only screen and (max-width: 840px) {
   .movie-poster {
     height: 75%;
     width: 25%;
   }
-}
+} */
 
 @media only screen and (max-width: 600px) {
   .movieDescription {
@@ -74,14 +92,16 @@ p {
   }
 
   .movie-poster {
-    height: 62%;
-    width: 45%;
+    min-height: 200px;
+    max-height: 300px;
+    min-width: 200px;
+    max-width: 200px;
   }
   p {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   h2 {
-    font-size: 15px;
+    font-size: 18px;
   }
 }

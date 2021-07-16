@@ -1,10 +1,15 @@
-button {
+.moviePoster {
   height: 100%;
   width: 100%;
   overflow: hidden;
   padding: 0px;
   box-shadow: 5px 5px 15px black;
   border: none;
+}
+
+.moviePoster:hover{
+  opacity: 70%;
+  transform: scale(1.05)
 }
 
 img {

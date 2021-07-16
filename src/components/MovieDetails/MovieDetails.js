@@ -20,23 +20,41 @@ class MovieDetails extends Component {
             .catch(() => this.setState({ error: 'Having trouble finding this movie right now...please try again.'} ));
     }
 
-    // formatOverviewLength = (overview) => {
-    //     if (overview.length && overview.length > 20) {
-    //         const shortOverview = overview.slice(0, 20) + '...';
-    //         console.log('Shorty', shortOverview)
-    //         return shortOverview;
-    //     } else {
-    //         console.log('OVERVIEW', overview)
-    //         return overview;
-    //     }
-    // }
+    formatOverview = (overview) => {
+        if (overview.length > 185) {
+            const shortOverview = overview.slice(0, 185) + '...';
+            return shortOverview;
+        } else {
+            return overview;
+        }
+    }
+
+    formatGenres = (genres) => {
+        const allGenres = genres.join(' | ')
+        return allGenres 
+      }
+
+    formatRating = (rating) => {
+        const formattedRating = rating.toFixed(0)
+        return formattedRating
+    }
+    
+    formatReleaseDate = (date) => {
+        const yearReleased = date.split("-")[0]
+        return yearReleased
+    }
    
     render() {
         
-        if (this.state.movieInfo.id) {
-            const { movieInfo } = this.state
-            console.log("WORKING?", movieInfo)
-        }
+        // if (this.state.movieInfo.id) {
+        //     const { movieInfo } = this.state
+        //     console.log("WORKING?", movieInfo)
+        // }
+        // if (this.state.error) {
+        //     return <h3>{this.state.error}</h3>
+        // } else if (!this.state.movieInfo && !this.state.error) {
+        //     return <h2 className='loading-message'>Page Loading 🍿</h2>
+        // } else {
 
             return (
     
@@ -53,17 +71,16 @@ class MovieDetails extends Component {
                         <div className='movieDetailsCard'>
                             <h2>{this.state.movieInfo.title}</h2>
                             <h4>{this.state.movieInfo.tagline}</h4>
-                            <p>{"Genre: " + this.state.movieInfo.genres}</p>
-                            <p>{"Rating: " + this.state.movieInfo.average_rating + "/10"}</p>
-                            <p>{"Release Date: " + this.state.movieInfo.release_date}</p>
-                            <p className='overview'>{this.state.movieInfo.overview}</p>
+                            <p>| {this.formatGenres(this.state.movieInfo.genres)} | </p>
+                            <p>Rating: {this.formatRating(this.state.movieInfo.average_rating)}/10</p>
+                            <p>Year Released: {this.formatReleaseDate(this.state.movieInfo.release_date)}</p>
+                            <p className='overview'>{this.formatOverview(this.state.movieInfo.overview)}</p>
                         </div>
                     </div> }
                 </section>
+                    
             )
-
-    
- }
+    }
 }
 
 MovieDetails.propTypes = {
