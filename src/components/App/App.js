@@ -6,7 +6,7 @@ import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import Nav from '../Nav/Nav';
 import { fetchMovies } from '../../apiCalls';
-import { fetchMovieInfo } from '../../apiCalls';
+// import { fetchMovieInfo } from '../../apiCalls';
 import { Route } from 'react-router-dom';
 
 class App extends Component {
@@ -38,9 +38,8 @@ class App extends Component {
   getSelectedMovie = (id) => {
     console.log(typeof id)
     console.log("ID", id);
-    console.log('MOVIE ID IN STATe', this.state.movies);
-    console.log('FIND MOVIE', this.state.movies.find(movie => movie.id === id));
-    return this.state.movies.find(movie => movie.id === id);
+    console.log('ALL MOVIES DISPLAYED', this.state.displayedMovies);
+    return this.state.displayedMovies.find(movie => movie.id === id);
   }
   // updateClickedMovie = (id) => {
   //   console.log("ID", id);
