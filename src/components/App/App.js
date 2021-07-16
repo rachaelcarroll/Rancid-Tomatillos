@@ -29,9 +29,12 @@ class App extends Component {
   handleSearch = (event) => {
     const { value } = event.target
     const searchedMovies = this.state.movieLibrary.filter(movie => movie.title.toLowerCase().includes(value.toLowerCase()))
-    console.log('searchedMOvies', searchedMovies)
     const searchError = !searchedMovies.length && 'Please search for another title'
     this.setState({displayedMovies: searchedMovies, searchBar: value, error: searchError})
+  }
+
+  handleDisplayAllMovies = () => {
+    this.setState({ displayedMovies: this.state.movieLibrary })
   }
   // resetClickedMovie = () => {
   //   this.setState({clickedMovie: {}})
@@ -58,6 +61,7 @@ class App extends Component {
       <Nav
           search={this.state.searchBar}
           handleSearch={this.handleSearch}
+          handleDisplayAllMovies={this.handleDisplayAllMovies}
         />
       <main className="App">
         {this.state.error && <h3 className='errorLoading'>{this.state.error}</h3>}
