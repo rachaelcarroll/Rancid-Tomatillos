@@ -29,7 +29,9 @@ class App extends Component {
   handleSearch = (event) => {
     const { value } = event.target
     const searchedMovies = this.state.movieLibrary.filter(movie => movie.title.toLowerCase().includes(value.toLowerCase()))
-    this.setState({displayedMovies: searchedMovies, searchBar: value})
+    console.log('searchedMOvies', searchedMovies)
+    const searchError = !searchedMovies.length && 'Please search for another title'
+    this.setState({displayedMovies: searchedMovies, searchBar: value, error: searchError})
   }
   // resetClickedMovie = () => {
   //   this.setState({clickedMovie: {}})
@@ -50,7 +52,6 @@ class App extends Component {
   //       .catch(error => this.setState({ error: 'Having trouble finding this movie right now...please try again.'} ));
   //   console.log("STATE", this.state.clickedMovie);
   // }
-
   render() {
     return (
       <section>
@@ -60,7 +61,8 @@ class App extends Component {
         />
       <main className="App">
         {this.state.error && <h3 className='errorLoading'>{this.state.error}</h3>}
-        {!this.state.displayedMovies.length && !this.state.error && <h3 >Loading...</h3>}
+        {!this.state.movieLibrary.length && !this.state.error && <h3 >Loading...</h3>}
+        {!this.state.displayedMovies && this.state.error && <h3>{this.state.error}</h3>}
         
           <Route exact path="/:id" render={({ match }) => {
             const movieURLId = parseInt(match.params.id);
