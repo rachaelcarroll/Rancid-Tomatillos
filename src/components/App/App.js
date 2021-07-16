@@ -26,9 +26,11 @@ class App extends Component {
       .catch(() => this.setState({ error: 'Error loading movies...please try again.'} ));
   }
 
-  handleSearch = () => {
+  handleSearch = (event) => {
+    const { value } = event.target
 
-
+    const searchedMovies = this.state.movieLibrary.filter(movie => movie.title.toLowerCase().includes(value.toLowerCase()))
+    this.setState({displayedMovies: searchedMovies})
 
   }
   // resetClickedMovie = () => {

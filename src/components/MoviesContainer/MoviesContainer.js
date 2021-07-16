@@ -18,7 +18,7 @@ const MoviesContainer = ({movies, updateClickedMovie}) => {
             key={movie.id}
             image={movie.poster_path}
             title={movie.title}
-            updateClickedMovie={updateClickedMovie}
+            // updateClickedMovie={updateClickedMovie}
             />
         )
     })
