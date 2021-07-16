@@ -48,7 +48,7 @@ class App extends Component {
     return (
       <main className="App">
         <nav>
-          <h1>Rancid Tomatillos</h1>
+          <h1>RANCID TOMATILLOS</h1>
         </nav>
         {this.state.error && <h3 className='errorLoading'>{this.state.error}</h3>}
         {!this.state.movies.length && !this.state.error && <h3 >Loading...</h3>}
