@@ -4,35 +4,42 @@ import './App.css';
 // import movieData from '../../movieData';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
+import Nav from '../Nav/Nav';
 import { fetchMovies } from '../../apiCalls';
-import { fetchMovieInfo } from '../../apiCalls';
+// import { fetchMovieInfo } from '../../apiCalls';
 import { Route } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      movies: [],
+      movieLibrary: [],
+      displayedMovies: [],
+      searchBar: '',
       error: ''
     }
   }
 
   componentDidMount = () => {
     fetchMovies()
-      .then(data => this.setState({ movies: data.movies }))
+      .then(data => this.setState({ movieLibrary: data.movies, displayedMovies: data.movies }))
       .catch(() => this.setState({ error: 'Error loading movies...please try again.'} ));
   }
 
-  resetClickedMovie = () => {
-    this.setState({clickedMovie: {}})
+  handleSearch = (event) => {
+    const { value } = event.target
+    const searchedMovies = this.state.movieLibrary.filter(movie => movie.title.toLowerCase().includes(value.toLowerCase()))
+    this.setState({displayedMovies: searchedMovies, searchBar: value})
   }
+  // resetClickedMovie = () => {
+  //   this.setState({clickedMovie: {}})
+  // }
   
   getSelectedMovie = (id) => {
     console.log(typeof id)
     console.log("ID", id);
-    console.log('MOVIE ID IN STATe', this.state.movies);
-    console.log('FIND MOVIE', this.state.movies.find(movie => movie.id === id));
-    return this.state.movies.find(movie => movie.id === id);
+    console.log('ALL MOVIES DISPLAYED', this.state.displayedMovies);
+    return this.state.displayedMovies.find(movie => movie.id === id);
   }
   // updateClickedMovie = (id) => {
   //   console.log("ID", id);
@@ -46,12 +53,14 @@ class App extends Component {
 
   render() {
     return (
+      <section>
+      <Nav
+          search={this.state.searchBar}
+          handleSearch={this.handleSearch}
+        />
       <main className="App">
-        <nav>
-          <h1>Rancid Tomatillos</h1>
-        </nav>
         {this.state.error && <h3 className='errorLoading'>{this.state.error}</h3>}
-        {!this.state.movies.length && !this.state.error && <h3 >Loading...</h3>}
+        {!this.state.displayedMovies.length && !this.state.error && <h3 >Loading...</h3>}
         
           <Route exact path="/:id" render={({ match }) => {
             const movieURLId = parseInt(match.params.id);
@@ -64,19 +73,21 @@ class App extends Component {
           }}/>
           <Route exact path="/" render={() =>  
             <MoviesContainer 
-            movies={this.state.movies} 
-            updateClickedMovie={this.updateClickedMovie}
+            movies={this.state.displayedMovies} 
+            // updateClickedMovie={this.updateClickedMovie}
             />
           }/>
            
       </main>
+      </section>
     );
    }
 }
 
 App.propTypes = {
-  movies: PropTypes.array,
-  clickedMovie: PropTypes.object,
+  movieLibrary: PropTypes.array,
+  displayedMovies: PropTypes.array,
+  searchBar: PropTypes.string,
   error: PropTypes.string
 }
 

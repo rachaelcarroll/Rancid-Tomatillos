@@ -17,15 +17,13 @@ body {
   width: 100%;
 }
 
-nav {
-  position: top;
-}
-
 h1 {
   text-align: center;
-  font-size: 48px;
+  font-size: 60px;
   color: rgb(179, 120, 255);
   letter-spacing: 1px;
+  font-family: 'Ropa Sans', sans-serif;
+  margin: 0px;
 }
 
 h3 {
