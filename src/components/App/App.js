@@ -50,8 +50,8 @@ class App extends Component {
         <nav>
           <h1>Rancid Tomatillos</h1>
         </nav>
-        {this.state.error && <h3>{this.state.error}</h3>}
-        {!this.state.movies.length && !this.state.error && <h3>Loading...</h3>}
+        {this.state.error && <h3 className='errorLoading'>{this.state.error}</h3>}
+        {!this.state.movies.length && !this.state.error && <h3 >Loading...</h3>}
         
           <Route exact path="/:id" render={({ match }) => {
             const movieURLId = parseInt(match.params.id);
