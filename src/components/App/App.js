@@ -69,7 +69,7 @@ class App extends Component {
       <Nav
           search={this.state.searchBar}
           handleSearch={this.handleSearch}
-          handleDisplayAllMovies={this.handleDisplayAllMovies}
+          clickedMovie={this.state.clickedMovie}
         />
       <main className="App">
         {this.state.error && <h3 className='errorLoading'>{this.state.error}</h3>}
