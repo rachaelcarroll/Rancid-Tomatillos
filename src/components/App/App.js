@@ -15,7 +15,6 @@ class App extends Component {
     this.state = {
       movieLibrary: [],
       displayedMovies: [],
-      clickedMovie: {},
       searchBar: '',
       error: ''
     }
@@ -42,6 +41,8 @@ class App extends Component {
   clearSearchBar = () => {
     this.setState( { searchBar: ''})
   }
+
+
   // resetClickedMovie = () => {
   //   this.setState({clickedMovie: {}})
   // }
@@ -50,9 +51,7 @@ class App extends Component {
     console.log(typeof id)
     console.log("ID", id);
     console.log('ALL MOVIES DISPLAYED', this.state.displayedMovies);
-    const clickedMovie = this.state.displayedMovies.find(movie => movie.id === id);
-    this.setState({ clickedMovie })
-    return clickedMovie;
+    return this.state.displayedMovies.find(movie => movie.id === id);
   }
   // updateClickedMovie = (id) => {
   //   console.log("ID", id);
@@ -69,7 +68,7 @@ class App extends Component {
       <Nav
           search={this.state.searchBar}
           handleSearch={this.handleSearch}
-          clickedMovie={this.state.clickedMovie}
+          handleDisplayAllMovies={this.handleDisplayAllMovies}
         />
       <main className="App">
         {this.state.error && <h3 className='errorLoading'>{this.state.error}</h3>}
@@ -80,14 +79,15 @@ class App extends Component {
             const movieURLId = parseInt(match.params.id);
             const selectedMovie = this.getSelectedMovie(movieURLId);
             console.log('SELECTED MOVIE', selectedMovie);
-            return <MovieDetails key={movieURLId} 
-            id={movieURLId}
-            movieInfo={selectedMovie}
+            return <MovieDetails 
+              key={movieURLId} 
+              id={movieURLId}
+              movieInfo={selectedMovie}
             /> 
           }}/>
           <Route exact path="/" render={() =>  
             <MoviesContainer 
-            movies={this.state.displayedMovies} 
+              movies={this.state.displayedMovies} 
             // updateClickedMovie={this.updateClickedMovie}
             />
           }/>

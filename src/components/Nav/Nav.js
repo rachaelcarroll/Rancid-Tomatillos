@@ -4,7 +4,7 @@ import './Nav.css';
 import { Link } from 'react-router-dom';
 
 
-const Nav = ({ search, handleSearch, clickedMovie }) => {
+const Nav = ({ search, handleSearch, handleDisplayAllMovies }) => {
     return (
     <nav className='nav'>
         <div className='header'>
@@ -20,7 +20,7 @@ const Nav = ({ search, handleSearch, clickedMovie }) => {
                 placeholder='by Movie Title'
             />
             </label>
-            {search && !clickedMovie.id && <button onClick={handleDisplayAllMovies}>Display All..</button>}
+            {search && <button onClick={handleDisplayAllMovies}>Display All..</button>}
         </div>
     </nav>
   )
