@@ -15,6 +15,7 @@ class App extends Component {
     this.state = {
       movieLibrary: [],
       displayedMovies: [],
+      clickedMovie: {},
       searchBar: '',
       error: ''
     }
@@ -49,7 +50,9 @@ class App extends Component {
     console.log(typeof id)
     console.log("ID", id);
     console.log('ALL MOVIES DISPLAYED', this.state.displayedMovies);
-    return this.state.displayedMovies.find(movie => movie.id === id);
+    const clickedMovie = this.state.displayedMovies.find(movie => movie.id === id);
+    this.setState({ clickedMovie })
+    return clickedMovie;
   }
   // updateClickedMovie = (id) => {
   //   console.log("ID", id);
