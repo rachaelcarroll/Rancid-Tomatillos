@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MoviePoster from '../MoviePoster/MoviePoster';
 import './MoviesContainer.css';
 
-const MoviesContainer = ({movies, updateClickedMovie}) => {
+const MoviesContainer = ({ movies }) => {
     
     const sortedPosters = movies.sort((a, b) => {
         let aTitle = a.title;
