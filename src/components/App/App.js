@@ -36,6 +36,7 @@ class App extends Component {
   handleDisplayAllMovies = () => {
     this.setState({ displayedMovies: this.state.movieLibrary })
     this.clearSearchBar()
+    this.setState({error: ''})
   }
 
   clearSearchBar = () => {
