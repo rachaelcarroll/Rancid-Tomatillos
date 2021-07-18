@@ -54,12 +54,13 @@ class MovieDetails extends Component {
         // } else if (!this.state.movieInfo && !this.state.error) {
         //     return <h2 className='loading-message'>Page Loading 🍿</h2>
         // } else {
+           console.log(this.props)
 
             return (
     
                 <section className="movieDetailsContainer" style={{ backgroundImage: `url(${this.state.movieInfo.backdrop_path})`}}>
                     <Link to="/">
-                        <button className='returnHome'>X</button>
+                        <button className='returnHome' onClick={this.props.handleDisplayAllMovies}>X</button>
                     </Link>
                     {this.state.error && <h3 className="errorLoading">{this.state.error}</h3>}
                     {!this.state.movieInfo && !this.state.error && <h2 className='loading-message'>Page Loading 🍿</h2>}

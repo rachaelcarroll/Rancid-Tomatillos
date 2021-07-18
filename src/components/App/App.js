@@ -42,11 +42,6 @@ class App extends Component {
     this.setState( { searchBar: ''})
   }
 
-
-  // resetClickedMovie = () => {
-  //   this.setState({clickedMovie: {}})
-  // }
-  
   getSelectedMovie = (id) => {
     console.log(typeof id)
     console.log("ID", id);
