@@ -36,6 +36,19 @@ describe ('Main Page', () => {
         .should("have.attr", "src").should("include", "https://image.tmdb.org/t/p/original//qzA87Wf4jo1h8JMk9GilyIYvwsA.jpg")
     })
 
+    it('Should be able to clear search bar when Display All Movies button is clicked', () => {
+      cy
+        .get('input[type=text]')
+        .type('Mulan')
+        .get('.nav')
+        .get('button')
+        .click()
+
+      cy
+        .get('input[type=text]')
+        .should('have.value', '')
+    })
+
     
     it('Should be able to be able to naviagate back and forward in browser', () => {
       cy
