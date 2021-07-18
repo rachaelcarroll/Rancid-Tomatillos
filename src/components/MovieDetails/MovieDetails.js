@@ -80,7 +80,7 @@ class MovieDetails extends Component {
                         <button className='returnHome' onClick={this.props.handleDisplayAllMovies}>X</button>
                     </Link>
                     {this.state.movieError && <h3 className="errorLoading">{this.state.movieError}</h3>}
-                    {!this.state.movieInfo && !this.state.error && <h2 className='loading-message'>Page Loading 🍿</h2>}
+                    {!this.state.movieInfo && !this.state.error && <h2 className='loading-message'>Page Loading...</h2>}
 
                     {title && !this.state.error &&
                      <article className='movieDescription'>
@@ -102,12 +102,12 @@ class MovieDetails extends Component {
                         <div className='movieTrailer'>
                             <iframe
                                 className='video'
-                                data-cy='video'
+                                // data-cy='video'
                                 width='650'
                                 height='380'
                                 src={`https://www.youtube.com/embed/${this.state.movieTrailers[0].key}`}
                                 frameBorder='0'
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                              />
                         </div> }
