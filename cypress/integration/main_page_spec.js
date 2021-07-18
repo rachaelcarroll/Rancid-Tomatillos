@@ -36,6 +36,15 @@ describe ('Main Page', () => {
         .should("have.attr", "src").should("include", "https://image.tmdb.org/t/p/original//qzA87Wf4jo1h8JMk9GilyIYvwsA.jpg")
     })
 
+    it.only('Should be able to display button to display all movies when search field has text', () => {
+      cy
+        .get('input[type=text]')
+        .type('Av')
+        .get('.nav')
+        // .contains('button')
+        .should('be.visible', 'button')
+     })
+
     it('Should be able to clear search bar when Display All Movies button is clicked', () => {
       cy
         .get('input[type=text]')
@@ -49,7 +58,7 @@ describe ('Main Page', () => {
         .should('have.value', '')
     })
 
-    it.only('Should be able to display all movies when Display All Movies button is clicked', () => {
+    it('Should be able to display all movies when Display All Movies button is clicked', () => {
       cy
         .get('input[type=text]')
         .type('Mulan')
