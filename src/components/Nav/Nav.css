@@ -4,6 +4,13 @@ nav {
     position: top;
     margin: 22px 0px 22px 0px;
     border-bottom: 2px solid white;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background-image: linear-gradient(
+    to bottom right,
+    rgb(15, 15, 15),
+    rgb(47, 31, 125));
   }
   
   form {
