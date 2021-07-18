@@ -99,8 +99,9 @@ class MovieDetails extends Component {
                     </article> }
                     {this.state.videoError && <h3 className="errorLoading">{this.state.videoError}</h3>}
                     {this.state.movieTrailers.length && 
-                        <div className='movie-trailer'>
+                        <div className='movieTrailer'>
                             <iframe
+                                className='video'
                                 data-cy='video'
                                 width='650'
                                 height='380'
@@ -108,7 +109,6 @@ class MovieDetails extends Component {
                                 frameBorder='0'
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
-                                title="Embedded youtube"
                              />
                         </div> }
                 </section>
