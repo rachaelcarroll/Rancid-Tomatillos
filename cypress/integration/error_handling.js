@@ -20,7 +20,7 @@ describe('Error Handling', () => {
 
       it('Should show error message when a single movie details page does not load', () => {
         cy
-        .intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', {response: 404})
+        .intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', {statusCode: 404})
         .visit('http://localhost:3000/337401')
         .get('.errorLoading').contains('Having trouble finding this movie right now...please try again.')
       })
