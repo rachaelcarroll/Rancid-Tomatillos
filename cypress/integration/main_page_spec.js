@@ -25,18 +25,6 @@ describe ('Main Page', () => {
     })
 });
 
-describe('Error testing', () => {
-  
-    it('Should show an error message when no movies render', () => {
-      cy
-        .intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', { statusCode: 404})
-        .visit('http://localhost:3000')
-
-        .get('main')
-        .get('.errorLoading')
-        .contains('Error loading movies...please try again.')
-    })
-})
     
 
 

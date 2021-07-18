@@ -24,7 +24,6 @@ const MoviesContainer = ({ movies }) => {
     })
         
     return (
-    
 
         <div className='moviesContainer'>{moviePosters}</div>
     
