@@ -41,7 +41,6 @@ describe ('Main Page', () => {
         .get('input[type=text]')
         .type('Av')
         .get('.nav')
-        // .contains('button')
         .should('be.visible', 'button')
      })
 
