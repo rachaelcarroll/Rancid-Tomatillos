@@ -93,19 +93,20 @@ console.log("VIDEO?", this.state.movieTrailers)
                     {!this.state.movieInfo && !this.state.error && <h2 className='loading-message'>Page Loading 🍿</h2>}
 
                     {this.state.movieInfo.id && !this.state.error &&
-                     <div className='movieDescription'>
+                     <article className='movieDescription'>
                         <img className='movie-poster' src={this.state.movieInfo.poster_path} id={this.state.movieInfo.id} alt={'Cover art image for ' + this.state.movieInfo.title}></img>
                         <div className='movieDetailsCard'>
                             <h2>{this.state.movieInfo.title}</h2>
                             <h4>{this.state.movieInfo.tagline}</h4>
-                            <p>{this.formatGenres(this.state.movieInfo.genres)}</p>
+                            <p className='genre'>{this.formatGenres(this.state.movieInfo.genres)}</p>
                             <p><strong>Rating: </strong>{this.formatRating(this.state.movieInfo.average_rating)}/10</p>
                             <p><strong>Year Released: </strong>{this.formatReleaseDate(this.state.movieInfo.release_date)}</p>
                             <p className='overview'>{this.formatOverview(this.state.movieInfo.overview)}</p>
                             <p className='budget'><strong>Budget: </strong>{this.formatCurrency(this.state.movieInfo.budget)}</p>
                             <p className='revenue'><strong>Revenue: </strong>{this.formatCurrency(this.state.movieInfo.revenue)}</p>
                         </div>
-                        {this.state.movieTrailers.length && 
+                    </article> }
+                    {this.state.movieTrailers.length && 
                         <div className='movie-trailer'>
                             <iframe
                                 data-cy='video'
@@ -116,9 +117,8 @@ console.log("VIDEO?", this.state.movieTrailers)
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
                                 title="Embedded youtube"
-                                />
+                             />
                         </div> }
-                    </div> }
                 </section>
                     
             )
