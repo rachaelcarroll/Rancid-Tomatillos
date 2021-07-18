@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './MovieDetails.css';
 import { Link } from 'react-router-dom';
-import { fetchMovieInfo } from '../../apiCalls';
+import { fetchMovieInfo, fetchVideo } from '../../apiCalls';
 
 class MovieDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
             movieInfo: {},
+            movieTrailers: '',
             error: ''
         }
     }
@@ -18,6 +19,10 @@ class MovieDetails extends Component {
         fetchMovieInfo(this.props.id)
             .then(movie => this.setState({ movieInfo: movie.movie }))
             .catch(() => this.setState({ error: 'Having trouble finding this movie right now...please try again.'} ));
+
+        fetchVideo(this.props.id)
+            .then(video => {this.setState({movieTrailers: video.videos})})
+            .catch(() => this.setState({ error: 'Sorry, this video is currently unavailable.'}))
     }
 
     formatOverview = (overview) => {
@@ -76,7 +81,7 @@ class MovieDetails extends Component {
         //   formattedRevenue = this.formatCurrency(revenue)
         // }
     
-
+console.log("VIDEO?", this.state.movieTrailers)
         
             return (
     
@@ -100,6 +105,19 @@ class MovieDetails extends Component {
                             <p className='budget'><strong>Budget: </strong>{this.formatCurrency(this.state.movieInfo.budget)}</p>
                             <p className='revenue'><strong>Revenue: </strong>{this.formatCurrency(this.state.movieInfo.revenue)}</p>
                         </div>
+                        {this.state.movieTrailers.length && 
+                        <div className='movie-trailer'>
+                            <iframe
+                                data-cy='video'
+                                width='654'
+                                height='380'
+                                src={`https://www.youtube.com/embed/${this.state.movieTrailers[0].key}`}
+                                frameBorder='0'
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                title="Embedded youtube"
+                                />
+                        </div> }
                     </div> }
                 </section>
                     
