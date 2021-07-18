@@ -1,8 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Nav.css';
-import { Link } from 'react-router-dom';
-
 
 const Nav = ({ search, handleSearch, handleDisplayAllMovies }) => {
     return (
@@ -10,18 +7,16 @@ const Nav = ({ search, handleSearch, handleDisplayAllMovies }) => {
         <div className='header'>
             <h1>RANCID TOMATILLOS</h1>
         </div>
-        <div className='searchContainer'>
-            <label>
-            Search:
+        <form className='searchContainer'>
             <input
+                type='text'
                 name='searchBar'
                 value={search}
                 onChange={handleSearch}
-                placeholder='by Movie Title'
+                placeholder='Search by Movie Title'
             />
-            </label>
-            {search && <button onClick={handleDisplayAllMovies}>Display All..</button>}
-        </div>
+            {search && <button onClick={handleDisplayAllMovies}>Display All Movies</button>}
+        </form>
     </nav>
   )
 }
