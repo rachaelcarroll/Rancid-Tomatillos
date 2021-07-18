@@ -16,9 +16,14 @@ describe ('Main Page', () => {
       cy
         .get('main')
         .children('.moviesContainer')
-        .url()
-        .should('include', '/')
+        .children('.moviePoster')
+        .should('have.length', 3)
+        // .url()
+        // .should('include', '/')
+
     })
+
+    // it.only
 
     it('Should be able to type in the search field', () => {
       cy
@@ -46,9 +51,19 @@ describe ('Main Page', () => {
 
       cy
         .get('input[type=text]')
-        .should('have.value', '')
+        // .should('have.value', '')
     })
 
+    it('Should be able to display all movies when Display All Movies button is clicked', () => {
+      cy
+        // .get('input[type=text]')
+        // .type('Mulan')
+        .get('.nav')
+        .get('button')
+        .click()
+
+        
+    })
     
     it('Should be able to be able to naviagate back and forward in browser', () => {
       cy
