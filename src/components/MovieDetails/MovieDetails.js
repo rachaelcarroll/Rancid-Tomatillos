@@ -71,7 +71,6 @@ class MovieDetails extends Component {
 
 
     render() {
-        
         const { id, title, release_date, backdrop_path, poster_path, overview, genres, budget, revenue, tagline, average_rating, runtime} = this.state.movieInfo
     
             return (
