@@ -30,8 +30,12 @@ class MovieDetails extends Component {
     }
 
     formatGenres = (genres) => {
-        const allGenres = genres.join(' | ')
-        return allGenres 
+        if(genres) {
+            const allGenres = genres.join(' | ')
+            return allGenres 
+        } else {
+            return '';
+        }
       }
 
     formatRating = (rating) => {
@@ -43,19 +47,37 @@ class MovieDetails extends Component {
         const yearReleased = date.split("-")[0]
         return yearReleased
     }
-   
+
+    formatCurrency(amount) {
+        if (amount === 0) {
+          return 'Not Reported'
+        }
+    
+        return amount.toLocaleString('en-US', {
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+          style: 'currency',
+          currency: 'USD'
+        })
+      }
+
     render() {
         
-        // if (this.state.movieInfo.id) {
-        //     const { movieInfo } = this.state
+        // const { title, release_date, backdrop_path, overview, genres, budget, revenue, runtime, average_rating } = this.state.movieInfo
+        // let formattedRating
+        // let formattedGenre
+        // let formattedBudget
+        // let formattedRevenue
+    
+        // if (!this.state.isLoading) {
+        //   fixedRating = average_rating.toFixed(1)
+        //   formattedGenre = this.formatGenres
+        //   formattedBudget = this.formatCurrency(budget)
+        //   formattedRevenue = this.formatCurrency(revenue)
         // }
-        // if (this.state.error) {
-        //     return <h3>{this.state.error}</h3>
-        // } else if (!this.state.movieInfo && !this.state.error) {
-        //     return <h2 className='loading-message'>Page Loading 🍿</h2>
-        // } else {
-           console.log(this.props)
+    
 
+        
             return (
     
                 <section className="movieDetailsContainer" style={{ backgroundImage: `url(${this.state.movieInfo.backdrop_path})`}}>
@@ -71,10 +93,12 @@ class MovieDetails extends Component {
                         <div className='movieDetailsCard'>
                             <h2>{this.state.movieInfo.title}</h2>
                             <h4>{this.state.movieInfo.tagline}</h4>
-                            <p>| {this.formatGenres(this.state.movieInfo.genres)} | </p>
-                            <p>Rating: {this.formatRating(this.state.movieInfo.average_rating)}/10</p>
-                            <p>Year Released: {this.formatReleaseDate(this.state.movieInfo.release_date)}</p>
+                            <p>{this.formatGenres(this.state.movieInfo.genres)}</p>
+                            <p><strong>Rating: </strong>{this.formatRating(this.state.movieInfo.average_rating)}/10</p>
+                            <p><strong>Year Released: </strong>{this.formatReleaseDate(this.state.movieInfo.release_date)}</p>
                             <p className='overview'>{this.formatOverview(this.state.movieInfo.overview)}</p>
+                            <p className='budget'><strong>Budget: </strong>{this.formatCurrency(this.state.movieInfo.budget)}</p>
+                            <p className='revenue'><strong>Revenue: </strong>{this.formatCurrency(this.state.movieInfo.revenue)}</p>
                         </div>
                     </div> }
                 </section>
