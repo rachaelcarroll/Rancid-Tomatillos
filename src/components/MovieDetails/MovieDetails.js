@@ -53,7 +53,7 @@ class MovieDetails extends Component {
         return yearReleased
     }
 
-    formatCurrency(amount) {
+    formatCurrency = (amount) => {
         if (amount === 0) {
           return 'Not Reported'
         }
@@ -66,23 +66,22 @@ class MovieDetails extends Component {
         })
       }
 
+
     render() {
         
-        const { id, title, release_date, backdrop_path, overview, genres, budget, revenue, runtime, average_rating } = this.state.movieInfo
-        let formattedRating
-        let formattedGenre
-        let formattedBudget
-        let formattedRevenue
+        // const { id, title, release_date, backdrop_path, overview, genres, budget, revenue, runtime, average_rating } = this.state.movieInfo
+        // let formattedRating
+        // let formattedGenre
+        // let formattedBudget
+        // let formattedRevenue
     
-        if (!this.state.error) {
-          formattedRating = average_rating.toFixed(0)
-          formattedGenre = this.formatGenres
-          formattedBudget = this.formatCurrency(budget)
-          formattedRevenue = this.formatCurrency(revenue)
-        }
+        // if (!this.state.error) {
+        //   formattedRating = average_rating.toFixed(0)
+        //   formattedGenre = this.formatGenres
+        //   formattedBudget = this.formatCurrency(budget)
+        //   formattedRevenue = this.formatCurrency(revenue)
+        // }
     
-console.log("VIDEO?", this.state.movieTrailers)
-        
             return (
     
                 <section className="movieDetailsContainer" style={{ backgroundImage: `url(${this.state.movieInfo.backdrop_path})`}}>

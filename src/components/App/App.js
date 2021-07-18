@@ -65,6 +65,7 @@ class App extends Component {
               key={movieURLId} 
               id={movieURLId}
               movieInfo={selectedMovie}
+              handleDisplayAllMovies={this.handleDisplayAllMovies}
             /> 
           }}/>
           <Route exact path="/" render={() =>  
