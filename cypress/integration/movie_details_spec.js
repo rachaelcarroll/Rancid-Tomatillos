@@ -6,53 +6,49 @@ describe ('Main Details Page', () => {
 
     it('Should be able to click on a movie poster and be redirected to a new link', () => {
         cy
-          .get('.moviesContainer').get("a[name='Mulan']").click()
-          .url().should('include', '337401')
+          .get('.moviesContainer')
+          .get("a[name='Mulan']")
+          .click()
+          .url()
+          .should('include', '337401')
     });
 
     it('Should see a movie details when clicking on a movie poster', () => {
-        cy.get("a[name='Mulan']")
+        cy
+          .get("a[name='Mulan']")
           .click()
-        cy.contains("Action")
-        cy.get("img")
-        .should("have.attr", "src").should("include", "https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg")
+          .get('.movieDetailsCard')
+          .contains("Action")
+          .get("img")
+          .should("have.attr", "src")
+          .should("include", "https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg")
     })
 
     it('Should be able to enter a unique url with id in path and should render a single movie', () => {
-        cy.visit('http://localhost:3000/337401')
-        cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', {
+        cy
+          .visit('http://localhost:3000/337401')
+          .intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', {
           fixture: 'single_movie_data.json' 
         })
-        cy.get('.movieDescription').children('.movieDetailsCard').contains('Mulan')
+          .get('.movieDescription').children('.movieDetailsCard').contains('Mulan')
       })
 
     it('Should return to home page view showing all movies when the exit button is clicked', () => {
         cy
-        .get('.moviesContainer')
-        .get("a[name='Mulan']").click()
-        .get('button').click()
-        cy.url().should('include', '/')
+          .get('.moviesContainer')
+          .get("a[name='Mulan']").click()
+          .get('button').click()
+          .url().should('include', '/')
     })
+
+    it.only('Should be able to view a movie trailer for an individual movie', () => {
+      cy
+          .get("a[name='Mulan']")
+          .click()
+          .get('.movieTrailer')
+          .get('.video')
+          .should("have.attr", "src")
+          .should("include", "01ON04GCwKs")
+    })
+
 })
-
-// Cannot get this to work, the network request is still coming through so the error is never popping up
-// I tried a few different ways (as seen below) and tried intercepting after we visit the single movie page as well as before (which should be the accurate way)
-
-// describe.only ('Error message handling', () => {
-
-//     it('Should show error message when a single movie details page does not load', () => {
-//         cy
-//         .intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { response: 404 })
-//         .visit('http://localhost:3000/337401')
-//         .get('.movieDetailsContainer').get('errorLoading').contains('Having trouble finding this movie right now...please try again.')
-
-
-//         // .visit('http://localhost:3000/')
-//         // .get('.moviesContainer')
-//         // .get("a[name='Mulan']").click()
-//         // .get('button').click()
-//         // .intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401', { response: 404 })
-
-//       })
-
-// })

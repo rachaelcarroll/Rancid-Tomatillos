@@ -24,7 +24,7 @@
 }
 
 .returnHome:hover {
-  background-color:rgb(29, 22, 62);
+  background-color: rgb(29, 22, 62);
   color: white;
   box-shadow: none;
 }
@@ -53,7 +53,7 @@
   padding: 20px 15px 30px;
 }
 
-.movie-trailer {
+.movieTrailer {
   display: flex;
   justify-content: center;
   margin: 10px 0px 12px 0px;
@@ -83,7 +83,6 @@ p {
 .genre {
   margin-bottom: 28px;
 }
-
 
 @media only screen and (max-width: 600px) {
   .movieDescription {
