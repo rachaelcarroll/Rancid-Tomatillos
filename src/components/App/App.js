@@ -49,36 +49,34 @@ class App extends Component {
 
     return (
       <section>
-      <Nav
-          search={this.state.searchBar}
-          handleSearch={this.handleSearch}
-          handleDisplayAllMovies={this.handleDisplayAllMovies}
-          selectedMovie={this.state.selectedMovie}
-        />
-      }
-      <main className="App">
-        {this.state.error && <h3 className='errorLoading'>{this.state.error}</h3>}
-        {!this.state.movieLibrary.length && !this.state.error && <h3 >Loading...</h3>}
-        {!this.state.displayedMovies && this.state.error && <h3>{this.state.error}</h3>}
+        <Nav
+            search={this.state.searchBar}
+            handleSearch={this.handleSearch}
+            handleDisplayAllMovies={this.handleDisplayAllMovies}
+          />
+        <main className="App">
+          {this.state.error && <h3 className='errorLoading'>{this.state.error}</h3>}
+          {!this.state.movieLibrary.length && !this.state.error && <h3 >Loading...</h3>}
+          {!this.state.displayedMovies && this.state.error && <h3>{this.state.error}</h3>}
+          
+            <Route exact path="/:id" render={({ match }) => {
+              const movieURLId = parseInt(match.params.id);
+              const selectedMovie = this.getSelectedMovie(movieURLId);
+              return <MovieDetails 
+                key={movieURLId} 
+                id={movieURLId}
+                movieInfo={selectedMovie}
+                handleDisplayAllMovies={this.handleDisplayAllMovies}
+              /> 
+            }}/>
+            <Route exact path="/" render={() =>  
+              <MoviesContainer 
+                movies={this.state.displayedMovies} 
+              />
+            }/>
         
-          <Route exact path="/:id" render={({ match }) => {
-            const movieURLId = parseInt(match.params.id);
-            const selectedMovie = this.getSelectedMovie(movieURLId);
-            return <MovieDetails 
-              key={movieURLId} 
-              id={movieURLId}
-              movieInfo={selectedMovie}
-              handleDisplayAllMovies={this.handleDisplayAllMovies}
-            /> 
-          }}/>
-          <Route exact path="/" render={() =>  
-            <MoviesContainer 
-              movies={this.state.displayedMovies} 
-            />
-          }/>
-      
-      </main>
-      </section>
+        </main>
+        </section>
     );
    }
 }
