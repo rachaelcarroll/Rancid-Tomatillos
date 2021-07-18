@@ -10,18 +10,19 @@ class MovieDetails extends Component {
         this.state = {
             movieInfo: {},
             movieTrailers: '',
-            error: ''
+            movieError: '',
+            videoError: '',
         }
     }
    
     componentDidMount() {
         fetchMovieInfo(this.props.id)
             .then(movie => this.setState({ movieInfo: movie.movie }))
-            .catch(() => this.setState({ error: 'Having trouble finding this movie right now...please try again.'} ));
+            .catch(() => this.setState({ movieError: 'Having trouble finding movie information right now...please try again.'} ));
 
         fetchVideo(this.props.id)
             .then(video => {this.setState({movieTrailers: video.videos})})
-            .catch(() => this.setState({ error: 'Sorry, this video is currently unavailable.'}))
+            .catch(() => this.setState({ videoError: 'Sorry, this video is currently unavailable.'}))
     }
 
     formatOverview = (overview) => {
@@ -78,7 +79,7 @@ class MovieDetails extends Component {
                     <Link to="/">
                         <button className='returnHome' onClick={this.props.handleDisplayAllMovies}>X</button>
                     </Link>
-                    {this.state.error && <h3 className="errorLoading">{this.state.error}</h3>}
+                    {this.state.movieError && <h3 className="errorLoading">{this.state.movieError}</h3>}
                     {!this.state.movieInfo && !this.state.error && <h2 className='loading-message'>Page Loading 🍿</h2>}
 
                     {title && !this.state.error &&
@@ -96,6 +97,7 @@ class MovieDetails extends Component {
                             <p className='runtime'><strong>Runtime: </strong>{this.formatRuntime(runtime)}</p>
                         </div>
                     </article> }
+                    {this.state.videoError && <h3 className="errorLoading">{this.state.videoError}</h3>}
                     {this.state.movieTrailers.length && 
                         <div className='movie-trailer'>
                             <iframe
