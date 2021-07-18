@@ -16,7 +16,7 @@ const Nav = ({ search, handleSearch, handleDisplayAllMovies }) => {
                 placeholder='Search by Movie Title'
             />
             {search && <button onClick={handleDisplayAllMovies}>Display All Movies</button>}
-        </form>
+        </form> 
     </nav>
   )
 }

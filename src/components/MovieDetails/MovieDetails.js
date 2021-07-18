@@ -15,7 +15,6 @@ class MovieDetails extends Component {
     }
    
     componentDidMount() {
-        console.log("heyyyyyyyy", this.props.id);
         fetchMovieInfo(this.props.id)
             .then(movie => this.setState({ movieInfo: movie.movie }))
             .catch(() => this.setState({ error: 'Having trouble finding this movie right now...please try again.'} ));
@@ -66,50 +65,43 @@ class MovieDetails extends Component {
         })
       }
 
+    formatRuntime = (runtime) => {
+     return !runtime ? 'Not Reported' : runtime + " mins"
+    }
+
 
     render() {
         
-        // const { id, title, release_date, backdrop_path, overview, genres, budget, revenue, runtime, average_rating } = this.state.movieInfo
-        // let formattedRating
-        // let formattedGenre
-        // let formattedBudget
-        // let formattedRevenue
-    
-        // if (!this.state.error) {
-        //   formattedRating = average_rating.toFixed(0)
-        //   formattedGenre = this.formatGenres
-        //   formattedBudget = this.formatCurrency(budget)
-        //   formattedRevenue = this.formatCurrency(revenue)
-        // }
+        const { id, title, release_date, backdrop_path, poster_path, overview, genres, budget, revenue, tagline, average_rating, runtime} = this.state.movieInfo
     
             return (
-    
-                <section className="movieDetailsContainer" style={{ backgroundImage: `url(${this.state.movieInfo.backdrop_path})`}}>
+                <section className="movieDetailsContainer" style={{ backgroundImage: `url(${backdrop_path})`}}>
                     <Link to="/">
                         <button className='returnHome' onClick={this.props.handleDisplayAllMovies}>X</button>
                     </Link>
                     {this.state.error && <h3 className="errorLoading">{this.state.error}</h3>}
                     {!this.state.movieInfo && !this.state.error && <h2 className='loading-message'>Page Loading 🍿</h2>}
 
-                    {this.state.movieInfo.id && !this.state.error &&
+                    {title && !this.state.error &&
                      <article className='movieDescription'>
-                        <img className='movie-poster' src={this.state.movieInfo.poster_path} id={this.state.movieInfo.id} alt={'Cover art image for ' + this.state.movieInfo.title}></img>
+                        <img className='movie-poster' src={poster_path} id={id} alt={'Cover art image for ' + title}></img>
                         <div className='movieDetailsCard'>
-                            <h2>{this.state.movieInfo.title}</h2>
-                            <h4>{this.state.movieInfo.tagline}</h4>
-                            <p className='genre'>{this.formatGenres(this.state.movieInfo.genres)}</p>
-                            <p><strong>Rating: </strong>{this.formatRating(this.state.movieInfo.average_rating)}/10</p>
-                            <p><strong>Year Released: </strong>{this.formatReleaseDate(this.state.movieInfo.release_date)}</p>
-                            <p className='overview'>{this.formatOverview(this.state.movieInfo.overview)}</p>
-                            <p className='budget'><strong>Budget: </strong>{this.formatCurrency(this.state.movieInfo.budget)}</p>
-                            <p className='revenue'><strong>Revenue: </strong>{this.formatCurrency(this.state.movieInfo.revenue)}</p>
+                            <h2>{title}</h2>
+                            <h4>{tagline}</h4>
+                            <p className='genre'>{this.formatGenres(genres)}</p>
+                            <p><strong>Rating: </strong>{this.formatRating(average_rating)}/10</p>
+                            <p><strong>Year Released: </strong>{this.formatReleaseDate(release_date)}</p>
+                            <p className='overview'>{this.formatOverview(overview)}</p>
+                            <p className='budget'><strong>Budget: </strong>{this.formatCurrency(budget)}</p>
+                            <p className='revenue'><strong>Revenue: </strong>{this.formatCurrency(revenue)}</p>
+                            <p className='runtime'><strong>Runtime: </strong>{this.formatRuntime(runtime)}</p>
                         </div>
                     </article> }
                     {this.state.movieTrailers.length && 
                         <div className='movie-trailer'>
                             <iframe
                                 data-cy='video'
-                                width='654'
+                                width='650'
                                 height='380'
                                 src={`https://www.youtube.com/embed/${this.state.movieTrailers[0].key}`}
                                 frameBorder='0'
@@ -119,7 +111,6 @@ class MovieDetails extends Component {
                              />
                         </div> }
                 </section>
-                    
             )
     }
 }

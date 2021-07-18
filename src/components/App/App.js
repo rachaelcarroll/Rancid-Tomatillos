@@ -46,13 +46,16 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <section>
       <Nav
           search={this.state.searchBar}
           handleSearch={this.handleSearch}
           handleDisplayAllMovies={this.handleDisplayAllMovies}
+          selectedMovie={this.state.selectedMovie}
         />
+      }
       <main className="App">
         {this.state.error && <h3 className='errorLoading'>{this.state.error}</h3>}
         {!this.state.movieLibrary.length && !this.state.error && <h3 >Loading...</h3>}
@@ -73,7 +76,7 @@ class App extends Component {
               movies={this.state.displayedMovies} 
             />
           }/>
-           
+      
       </main>
       </section>
     );
