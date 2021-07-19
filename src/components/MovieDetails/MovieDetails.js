@@ -102,6 +102,7 @@ class MovieDetails extends Component {
                         {!!this.state.movieTrailers.length && 
                             <div className='movieTrailer'>
                                 <iframe
+                                    title="Embedded youtube"
                                     className='video'
                                     width='650'
                                     height='380'
