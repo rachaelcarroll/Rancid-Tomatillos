@@ -1,5 +1,6 @@
 import React from 'react';
 import './Nav.css';
+import { Route } from 'react-router-dom';
 
 const Nav = ({ search, handleSearch, handleDisplayAllMovies }) => {
     return (
@@ -7,6 +8,7 @@ const Nav = ({ search, handleSearch, handleDisplayAllMovies }) => {
         <div className='header'>
             <h1>RANCID TOMATILLOS</h1>
         </div>
+        <Route exact path = '/' render={() => 
         <form className='searchContainer'>
             <input
                 type='text'
@@ -16,7 +18,8 @@ const Nav = ({ search, handleSearch, handleDisplayAllMovies }) => {
                 placeholder='Search by Movie Title'
             />
             {search && <button onClick={handleDisplayAllMovies}>Display All Movies</button>}
-        </form> 
+        </form> }
+        />
     </nav>
   )
 }
