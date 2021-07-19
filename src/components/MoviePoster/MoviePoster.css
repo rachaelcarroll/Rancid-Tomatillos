@@ -7,9 +7,9 @@
   border: none;
 }
 
-.moviePoster:hover{
-  opacity: 70%;
-  transform: scale(1.05)
+.moviePoster:hover {
+  opacity: 0.7;
+  transform: scale(1.05);
 }
 
 img {
