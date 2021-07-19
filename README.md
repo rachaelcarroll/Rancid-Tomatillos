@@ -26,7 +26,7 @@ To solidify and demonstrate the understanding of:
 
 #### View All Movies 
 - A user may browse a collection of movies on the main page<br>
-![Demo of browsing movies on main page](./src/images/login.gif)
+![Demo of browsing movies on main page](https://user-images.githubusercontent.com/76228573/126231020-22440e5e-ff88-4a22-83c5-ee2fbef3eda6.gif)
 
 
 #### Search By Movie Title 
@@ -69,10 +69,11 @@ If you would like to contribute, please fork this repository and clone it down t
 ## Technologies Used
 - JavaScript
 - Semantic HTML
-- Cypress 
-- WebPack/Babel
+- CSS
 - React 
 - React Router 
+- Cypress 
+- WebPack/Babel
 
 
 ## Contributors
