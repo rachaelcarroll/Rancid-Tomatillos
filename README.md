@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# *Rancid Tomatillos*
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Table of Contents
+- [Overview](#overview-and-project-goals)
+- [Learning Goals](#learning-goals)
+- [Functionality](#functionality)
+- [Future Additions](#future-additions)
+- [Installation & Viewing](#installation-&-viewing)
+- [Technologies Used](#technologies-used)
+- [Contributors](#contributors)
 
-## Available Scripts
+## Overview and Project Goals
+Welcome to Rancid Tomatillos - the latest and greatest movie browsing application! 
 
-In the project directory, you can run:
+The goal of this Mod3 partner [project](https://frontend.turing.edu/projects/module-3/rancid-tomatillos-v3.html) was to create a React app that allows users to browse through a collection of movies and see what peaks their interest.  They may also search for a specific movie title, read the movie's details, and watch the movie trailer.
 
-### `npm start`
+### Learning Goals
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To solidify and demonstrate the understanding of:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- React fundamentals 
+- Testing React components & asynchronous JS
+- Creating a multi-page UX using Router
 
-### `npm test`
+## Functionality 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### View All Movies 
+- A user may browse a collection of movies on the main page<br>
+![alt text](./src/images/login.gif "Demo of browsing movies on main page")
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Search By Movie Title 
+- The user may search by movie title via the search bar and click *Display All Movies* to show the full collection<br>
+![alt text](./src/images/filter.gif "Demo of searching movies")
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### View Movie Details 
+- The user may click on a movie poster to view more details on that movie<br>
+![alt text](./src/images/bookroom.gif "Demo Movie Details page")
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Mobile View/Responsive
+- Site is responsive and will change layouts across desktop, tablet, and phone screens<br>
+![alt text](./src/images/screens.gif "Demo of responsiveness across media")
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Future Additions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- *Add movie to watchlist*: functionality to add movies to a watchlist 
+- *Add rating and review*: functionality to add ratings and reviews to movies  
+- *Share*: ability to share a movie via social media or email 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Installation & Viewing 
 
-## Learn More
+Our application is deployed to Vercel. You may view the live application [here](https://rancid-tomatillos-one.vercel.app/).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To view our application on your local device:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Clone down this repository
+- Run `npm i` in your terminal
+- Run `npm start` in your terminal
+- To view Cypress tests open a separate tab in your terminal and run `npm run cypress`
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Want to Contribute?
+If you would like to contribute, please fork this repository and clone it down to your local machine. Once you've successfully implemented the changes in code necessary for your intended contribution without changing any of the current functionality of main, submit a pull request for authors to review the changes.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Technologies Used
+- JavaScript
+- Semantic HTML
+- Cypress 
+- WebPack/Babel
+- React 
+- React Router 
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributors
+### Author
+- [Rachael Carroll](https://github.com/rachaelcarroll)
+- [Shauna Myers](https://github.com/ShaunaMyers)
 
-### Advanced Configuration
+**************************************************************************
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**[Back to top](#table-of-contents)**
