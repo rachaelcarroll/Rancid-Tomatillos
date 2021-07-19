@@ -36,7 +36,8 @@ To solidify and demonstrate the understanding of:
 
 #### View Movie Details 
 - The user may click on a movie poster to view more details on that movie<br>
-![alt text](./src/images/bookroom.gif "Demo Movie Details page") 
+![Demo of movie details page](https://user-images.githubusercontent.com/76228573/126230633-facbd130-503c-4b3c-85e7-2f8d4ce25dac.gif)
+ 
 
 
 #### Mobile View/Responsive
