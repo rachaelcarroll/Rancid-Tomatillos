@@ -36,12 +36,13 @@ To solidify and demonstrate the understanding of:
 
 #### View Movie Details 
 - The user may click on a movie poster to view more details on that movie<br>
-![alt text](./src/images/bookroom.gif "Demo Movie Details page")
+![alt text](./src/images/bookroom.gif "Demo Movie Details page") 
+
 
 
 #### Mobile View/Responsive
 - Site is responsive and will change layouts across desktop, tablet, and phone screens<br>
-![alt text](./src/images/screens.gif "Demo of responsiveness across media")
+![Demo of responsiveness across media](https://user-images.githubusercontent.com/76228573/126229433-4ce4373d-7079-4055-9544-9fa5e81fd85c.gif)
 
 ## Future Additions
 
