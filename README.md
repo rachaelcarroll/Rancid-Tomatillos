@@ -1,3 +1,4 @@
+![recording (4)](https://user-images.githubusercontent.com/76228573/126230000-b896162f-be83-47d2-9f81-e7e394077f5f.gif)
 # *Rancid Tomatillos*
 
 ### Table of Contents
@@ -31,13 +32,12 @@ To solidify and demonstrate the understanding of:
 
 #### Search By Movie Title 
 - The user may search by movie title via the search bar and click *Display All Movies* to show the full collection<br>
-![alt text](./src/images/filter.gif "Demo of searching movies")
+![Demo of searching movies](https://user-images.githubusercontent.com/76228573/126230092-bd92454a-441a-4b01-8284-fd4c359bea5b.gif)
 
 
 #### View Movie Details 
 - The user may click on a movie poster to view more details on that movie<br>
 ![alt text](./src/images/bookroom.gif "Demo Movie Details page") 
-
 
 
 #### Mobile View/Responsive
