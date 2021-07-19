@@ -5,7 +5,7 @@
 - [Learning Goals](#learning-goals)
 - [Functionality](#functionality)
 - [Future Additions](#future-additions)
-- [Installation & Viewing](#installation-&-viewing)
+- [Installation & Viewing](#installation-and-viewing)
 - [Technologies Used](#technologies-used)
 - [Contributors](#contributors)
 
@@ -26,7 +26,7 @@ To solidify and demonstrate the understanding of:
 
 #### View All Movies 
 - A user may browse a collection of movies on the main page<br>
-![alt text](./src/images/login.gif "Demo of browsing movies on main page")
+![Demo of browsing movies on main page](./src/images/login.gif)
 
 
 #### Search By Movie Title 
@@ -49,7 +49,7 @@ To solidify and demonstrate the understanding of:
 - *Add rating and review*: functionality to add ratings and reviews to movies  
 - *Share*: ability to share a movie via social media or email 
 
-## Installation & Viewing 
+## Installation and Viewing 
 
 Our application is deployed to Vercel. You may view the live application [here](https://rancid-tomatillos-one.vercel.app/).
 
