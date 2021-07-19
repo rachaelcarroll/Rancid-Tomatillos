@@ -44,11 +44,21 @@ describe ('Main Details Page', () => {
           .should("include", "01ON04GCwKs")
       })
       
-      it.only('Should be able to not see the search bar and button when an individual movie is viewed', () => {
+      it('Should be able to not see the search bar when an individual movie is viewed', () => {
         cy
           .get("a[name='Mulan']")
           .click()
           .get('input')
+          .should('not.exist')
+
+      })
+
+      it.only('Should be able to not see the Display All Movies button when an individual movie is viewed', () => {
+        cy
+          .get("a[name='Mulan']")
+          .click()
+          .get('.nav')
+          .get('.displayMovies')
           .should('not.exist')
 
       })
