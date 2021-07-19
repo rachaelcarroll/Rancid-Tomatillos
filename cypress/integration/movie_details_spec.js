@@ -33,22 +33,32 @@ describe ('Main Details Page', () => {
           .get('.movieDescription').children('.movieDetailsCard').contains('Mulan')
       })
 
-    it('Should return to home page view showing all movies when the exit button is clicked', () => {
+      
+      it('Should be able to view a movie trailer for an individual movie', () => {
         cy
-          .get('.moviesContainer')
-          .get("a[name='Mulan']").click()
-          .get('button').click()
-          .url().should('include', '/')
-    })
-
-    it('Should be able to view a movie trailer for an individual movie', () => {
-      cy
           .get("a[name='Mulan']")
           .click()
           .get('.movieTrailer')
           .get('.video')
           .should("have.attr", "src")
           .should("include", "01ON04GCwKs")
-    })
+      })
+      
+      it.only('Should be able to not see the search bar and button when an individual movie is viewed', () => {
+        cy
+          .get("a[name='Mulan']")
+          .click()
+          .get('input')
+          .should('not.exist')
+
+      })
+
+      it('Should return to home page view showing all movies when the exit button is clicked', () => {
+          cy
+            .get('.moviesContainer')
+            .get("a[name='Mulan']").click()
+            .get('button').click()
+            .url().should('include', '/')
+      })
 
 })
