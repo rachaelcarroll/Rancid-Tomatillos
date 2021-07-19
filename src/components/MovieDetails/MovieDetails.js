@@ -99,7 +99,7 @@ class MovieDetails extends Component {
                             </div>
                         </article> }
                         {this.state.videoError && <h3 className="errorLoading">{this.state.videoError}</h3>}
-                        {this.state.movieTrailers.length && 
+                        {!!this.state.movieTrailers.length && 
                             <div className='movieTrailer'>
                                 <iframe
                                     className='video'

@@ -46,7 +46,7 @@
   background-color: black;
   opacity: 70%;
   min-height: 200px;
-  height: 375px;
+  height: 40%;
   min-width: 300px;
   max-width: 300px;
   text-align: center;
@@ -63,6 +63,7 @@ h2,
 h4 {
   color: white;
   font-size: 35px;
+  font-family: 'Ropa Sans', sans-serif;
   margin: 0;
   letter-spacing: 1.2px;
 }
@@ -70,7 +71,7 @@ h4 {
 h4 {
   font-size: 15px;
   font-style: italic;
-  margin: 4px 0px 28px;
+  margin: 4px 0px 25px;
   font-weight: 400;
 }
 
@@ -92,8 +93,8 @@ p {
   }
 
   .movieDetailsCard {
-    margin-bottom: 60px;
-    padding: 50px 15px;
+    height: 200px;
+    width: 200px;
   }
 
   .movie-poster {
