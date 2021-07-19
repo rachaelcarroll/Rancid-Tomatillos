@@ -36,7 +36,7 @@ describe ('Main Page', () => {
         .should("have.attr", "src").should("include", "https://image.tmdb.org/t/p/original//qzA87Wf4jo1h8JMk9GilyIYvwsA.jpg")
     })
 
-    it.only('Should be able to display button to display all movies when search field has text', () => {
+    it('Should be able to display button to display all movies when search field has text', () => {
       cy
         .get('input[type=text]')
         .type('Av')

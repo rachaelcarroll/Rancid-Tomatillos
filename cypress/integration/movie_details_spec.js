@@ -41,7 +41,7 @@ describe ('Main Details Page', () => {
           .url().should('include', '/')
     })
 
-    it.only('Should be able to view a movie trailer for an individual movie', () => {
+    it('Should be able to view a movie trailer for an individual movie', () => {
       cy
           .get("a[name='Mulan']")
           .click()
