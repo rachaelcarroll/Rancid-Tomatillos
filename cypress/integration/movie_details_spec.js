@@ -53,7 +53,7 @@ describe ('Main Details Page', () => {
 
       })
 
-      it.only('Should be able to not see the Display All Movies button when an individual movie is viewed', () => {
+      it('Should be able to not see the Display All Movies button when an individual movie is viewed', () => {
         cy
           .get("a[name='Mulan']")
           .click()
