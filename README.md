@@ -1,4 +1,3 @@
-![recording (4)](https://user-images.githubusercontent.com/76228573/126230000-b896162f-be83-47d2-9f81-e7e394077f5f.gif)
 # *Rancid Tomatillos*
 
 ### Table of Contents
