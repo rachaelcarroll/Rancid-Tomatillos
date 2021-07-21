@@ -77,7 +77,7 @@ If you would like to contribute, please fork this repository and clone it down t
 
 
 ## Contributors
-### Author
+### Authors
 - [Rachael Carroll](https://github.com/rachaelcarroll)
 - [Shauna Myers](https://github.com/ShaunaMyers)
 
