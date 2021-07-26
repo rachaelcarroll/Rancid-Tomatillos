@@ -15,7 +15,9 @@ const Nav = ({ search, handleSearch, handleDisplayAllMovies }) => {
                 name='searchBar'
                 value={search}
                 onChange={handleSearch}
+                onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
                 placeholder='Search by Movie Title'
+                autoComplete='off'
             />
             {search && <button className="displayMovies" onClick={handleDisplayAllMovies}>Display All Movies</button>}
         </form> }
