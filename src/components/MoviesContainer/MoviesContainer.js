@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MoviePoster from '../MoviePoster/MoviePoster';
 import './MoviesContainer.css';
 
-const MoviesContainer = ({ movies, error }) => {
+const MoviesContainer = ({ movies }) => {
     const [search, setSearch] = useState('');
     
     const sortedPosters = movies.sort((a, b) => {

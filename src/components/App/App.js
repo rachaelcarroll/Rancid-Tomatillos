@@ -38,7 +38,6 @@ const App = () => {
             <Route exact path="/" render={() =>  
                 <MoviesContainer 
                   movies={displayedMovies} 
-                  error={error}
                 />
               }/>
             <Route exact path="/:id" render={({ match }) => {
