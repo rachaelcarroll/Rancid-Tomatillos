@@ -1,91 +1,62 @@
-import React, { Component } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
-import Nav from '../Nav/Nav';
 import { fetchMovies } from '../../apiCalls';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      movieLibrary: [],
-      displayedMovies: [],
-      searchBar: '',
-      error: ''
+const App = () => {
+  const [displayedMovies, setDisplayedMovies] = useState([]);
+  const [error, setError] = useState('');
+
+
+  useEffect(() => {
+    const getMovies = async () => {
+        try {
+        let data = await fetchMovies();
+        setDisplayedMovies(data.movies);
+      } catch (error) {
+        setError(error.message);
+      }
     }
-  }
-
-  componentDidMount = () => {
-    fetchMovies()
-      .then(data => this.setState({ movieLibrary: data.movies, displayedMovies: data.movies }))
-      .catch(() => this.setState({ error: 'Error loading movies...please try again.'} ));
-  }
-
-  handleSearch = (event) => {
-    const { value } = event.target
-    const searchedMovies = this.state.movieLibrary.filter(movie => movie.title.toLowerCase().includes(value.toLowerCase()))
-    const searchError = !searchedMovies.length && 'Please search for another title'
-    this.setState({displayedMovies: searchedMovies, searchBar: value, error: searchError})
-  }
-
-  handleDisplayAllMovies = () => {
-    this.setState({ displayedMovies: this.state.movieLibrary })
-    this.clearSearchBar()
-    this.setState({error: ''})
-  }
-
-  clearSearchBar = () => {
-    this.setState( { searchBar: ''})
-  }
-
-  getSelectedMovie = (id) => {
-    return this.state.displayedMovies.find(movie => movie.id === id);
-  }
-
-  render() {
+    getMovies();
+  }, [])
 
     return (
       <section>
-        <Nav
-            search={this.state.searchBar}
-            handleSearch={this.handleSearch}
-            handleDisplayAllMovies={this.handleDisplayAllMovies}
-          />
+        <nav className='nav'>
+          <div className='header'>
+              <h1>RANCID TOMATILLOS</h1>
+          </div>
+        </nav>
         <main className="App">
-          {this.state.error && <h3 className='errorLoading'>{this.state.error}</h3>}
-          {!this.state.movieLibrary.length && !this.state.error && <h3 >Loading...</h3>}
-          {!this.state.displayedMovies && this.state.error && <h3>{this.state.error}</h3>}
-          
+          {error && <h3 className='errorLoading'>{error}</h3>}
+          {!displayedMovies.length && !error && <h3>Loading Movies...</h3>}
+          {!displayedMovies && error && <h3>{error}</h3>}
+          <Switch>
+            <Route exact path="/" render={() =>  
+                <MoviesContainer 
+                  movies={displayedMovies} 
+                  error={error}
+                />
+              }/>
             <Route exact path="/:id" render={({ match }) => {
-              const movieURLId = parseInt(match.params.id);
-              const selectedMovie = this.getSelectedMovie(movieURLId);
+              const selectedMovie = displayedMovies.find(movie => movie.id === parseInt(match.params.id))
               return <MovieDetails 
-                key={movieURLId} 
-                id={movieURLId}
+                key={selectedMovie.title} 
+                id={selectedMovie.title}
                 movieInfo={selectedMovie}
-                handleDisplayAllMovies={this.handleDisplayAllMovies}
               /> 
             }}/>
-            <Route exact path="/" render={() =>  
-              <MoviesContainer 
-                movies={this.state.displayedMovies} 
-              />
-            }/>
-        
+            </Switch>
         </main>
         </section>
     );
-   }
 }
 
 App.propTypes = {
-  movieLibrary: PropTypes.array,
   displayedMovies: PropTypes.array,
-  searchBar: PropTypes.string,
-  error: PropTypes.string
 }
 
 export default App;
